@@ -1,0 +1,2 @@
+twitvim.vmb: call delete('/Users/abetatsuya/.vim/plugin/twitvim.vim')|call delete('/Users/abetatsuya/.vim/doc/twitvim.txt')
+twitvim-0.9.1.vmb: call delete('/Users/abetatsuya/.vim/plugin/twitvim.vim')|call delete('/Users/abetatsuya/.vim/autoload/twitvim.vim')|call delete('/Users/abetatsuya/.vim/doc/twitvim.txt')

@@ -1,0 +1,19 @@
+[[plugins]]
+repo = 'Shougo/unite.vim'
+
+[[plugins]]
+repo      = 'Shougo/neomru.vim'
+on_source = ['unite.vim']
+
+[[plugins]]
+repo  = 'raimon49/requirements.txt.vim'
+on_ft = ['python']
+
+[[plugins]]
+repo  = 'jelera/vim-javascript-syntax'
+on_ft = ['javascript']
+
+[[plugins]]
+repo  = 'arnaud-lb/vim-php-namespace'
+on_ft = ['php']
+

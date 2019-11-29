@@ -1,0 +1,12 @@
+quickrun
+748bcc2ce8f953500e90a6117ea1825ff7cca6eb
+
+Data.List
+System.File
+System.Filepath
+Prelude
+Process
+Vim.Message
+ConcurrentProcess
+Vim.ViewTracer
+Vim.Buffer

@@ -1,0 +1,202 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
+repo = 'haya14busa/dein-command.vim'
+
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+
+# space + go -> exec
+[[plugins]]
+repo = 'thinca/vim-quickrun'
+hook_add = '''
+map <Leader>go :QuickRun<CR>
+let g:quickrun_config={'*': {'split': ''}}
+'''
+
+# ga -> align
+[[plugins]]
+repo = 'junegunn/vim-easy-align'
+hook_add = '''
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+'''
+
+# 閉じ括弧保管
+[[plugins]]
+repo = 'cohama/lexima.vim'
+
+# Git
+[[plugins]]
+repo = 'prabirshrestha/vim-lsp'
+on_ft = ['python', 'go']
+depends = ['async.vim', 'deoplete-vim-lsp']
+hook_add = '''
+let g:lsp_diagnostics_echo_cursor = 1
+'''
+
+# Markdown
+[[plugins]]
+repo = 'kannokanno/previm'
+hook_add = '''
+nnoremap <silent> <C-p> :PrevimOpen<CR>
+let g:vim_markdown_folding_disabled = 1
+let g:previm_enable_realtime = 1
+'''
+[[plugins]]
+repo = 'tyru/open-browser.vim'
+
+
+[[plugins]]
+repo = 'w0rp/ale'
+hook_add = '''
+" 保存時のみ実行する
+let g:ale_lint_on_text_changed = 0
+" 表示に関する設定
+let g:ale_sign_error = ''
+let g:ale_sign_warning = ''
+let g:airline#extensions#ale#open_lnum_symbol = '('
+let g:airline#extensions#ale#close_lnum_symbol = ')'
+let g:ale_echo_msg_format = '[%linter%]%code: %%s'
+highlight link ALEErrorSign Tag
+highlight link ALEWarningSign StorageClass
+'''
+
+# error detect
+[[plugins]]
+repo = 'scrooloose/syntastic'
+hook_add = '''
+let g:syntastic_always_populate_loc_list=1
+let g:syntastic_error_symbol='✗'
+let g:syntastic_warning_symbol='⚠'
+let g:syntastic_style_error_symbol = '✗'
+let g:syntastic_style_warning_symbol = '⚠'
+let g:syntastic_auto_loc_list=1
+let g:syntastic_aggregate_errors = 1
+'''
+
+# Twitter
+[[plugins]]
+repo = 'twitvim/twitvim'
+
+## fzf
+[[plugins]]
+repo = 'junegunn/fzf'
+build = './install'
+[[plugins]]
+repo = 'junegunn/fzf.vim'
+
+## -----*----- NERDTree -----*----- ##
+[[plugins]]
+repo = 'scrooloose/nerdtree'
+hook_add = '''
+" space + dir -> sidebar
+let g:NERDTreeChDirMode=2
+let g:NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$', '__pycache__']
+let g:NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
+let g:NERDTreeShowBookmarks=1
+let g:nerdtree_tabs_focus_on_files=1
+let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
+let g:NERDTreeWinSize = 30
+let NERDTreeShowHidden=1
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
+autocmd BufWritePre * :FixWhitespace
+map <Leader>dir :NERDTreeToggle<CR>
+'''
+[[plugins]]
+repo = 'jistr/vim-nerdtree-tabs'
+[[plugins]]
+repo = 'ryanoasis/vim-devicons'
+
+## -----*----- option bar -----*----- ##
+[[plugins]]
+repo = 'vim-airline/vim-airline'
+hook_add = '''
+let g:airline#extensions#virtualenv#enabled = 1
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+if exists('g:airline_powerline_fonts')
+  let g:airline#extensions#tabline#left_sep = ' '
+  let g:airline#extensions#tabline#left_alt_sep = '|'
+  let g:airline_left_sep          = '▶'
+  let g:airline_left_alt_sep      = '»'
+  let g:airline_right_sep         = '◀'
+  let g:airline_right_alt_sep     = '«'
+  let g:airline#extensions#branch#prefix     = '⤴' "➔, ➥, ⎇
+  let g:airline#extensions#readonly#symbol   = '⊘'
+  let g:airline#extensions#linecolumn#prefix = '¶'
+  let g:airline#extensions#paste#symbol      = 'ρ'
+  let g:airline_symbols.linenr    = '␊'
+  let g:airline_symbols.branch    = '⎇'
+  let g:airline_symbols.paste     = 'ρ'
+  let g:airline_symbols.paste     = 'Þ'
+  let g:airline_symbols.paste     = '∥'
+  let g:airline_symbols.whitespace = 'Ξ'
+else
+  let g:airline#extensions#tabline#left_sep = ''
+  let g:airline#extensions#tabline#left_alt_sep = ''
+  let g:airline_left_sep = ''
+  let g:airline_left_alt_sep = ''
+  let g:airline_right_sep = ''
+  let g:airline_right_alt_sep = ''
+  let g:airline_symbols.branch = ''
+  let g:airline_symbols.readonly = ''
+  let g:airline_symbols.linenr = ''
+endif
+'''
+[[plugins]]
+repo = 'vim-airline/vim-airline-themes'
+
+## -----*----- コード補完 -----*----- ##
+[[plugins]]
+repo = 'Shougo/neocomplete.vim'
+[[plugins]]
+repo = 'Shougo/neosnippet.vim'
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+[[plugins]]
+repo = 'sheerun/vim-polyglot'
+[[plugins]]
+repo = 'ervandew/supertab'
+[[plugins]]
+repo = 'bronson/vim-trailing-whitespace'
+
+## -----*----- Git関連 -----*----- ##
+[[plugins]]
+repo ='lambdalisue/gina.vim'
+hook_add = '''
+call gina#custom#command#option('status', '--opener', 'vsplit')
+call gina#custom#command#option('diff', '--opener', 'vsplit')
+'''
+
+## -----*----- HTML -----*----- ##
+[[plugins]]
+repo = 'alvan/vim-closetag'
+[[plugins]]
+repo = 'valloric/matchtagalways'
+[[plugins]]
+repo = 'hail2u/vim-css3-syntax'
+[[plugins]]
+repo = 'gorodinskiy/vim-coloresque'
+[[plugins]]
+repo = 'tpope/vim-haml'
+[[plugins]]
+repo = 'mattn/emmet-vim'
+
+[[plugins]]
+repo = 'mattn/webapi-vim'
+
+[[plugins]]
+repo = 'cohama/lexima.vim'
+
+[[plugins]]
+repo = 'vim-jp/autofmt'
+
+[[plugins]]
+repo = 'kazukazuinaina/Weather.vim'
+
+[[plugins]]
+repo = 'itchyny/calendar.vim'
+
