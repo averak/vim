@@ -35,6 +35,15 @@ augroup END
 
 
 "" -----*----- Shortcuts -----*----- ""
+nnoremap c <UP>
+nnoremap t <DOWN>
+nnoremap h <LEFT>
+nnoremap n <RIGHT>
+
+vnoremap c <UP>
+vnoremap t <DOWN>
+vnoremap h <LEFT>
+vnoremap n <RIGHT>
 "" dein.vim
 :command PlugUpdate call dein#update()
 :command PlugInstall call dein#install()
