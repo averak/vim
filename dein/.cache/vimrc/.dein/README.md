@@ -1,129 +1,137 @@
-Neosnippet
+lexima.vim
 ==========
+[![Build Status](https://travis-ci.org/cohama/lexima.vim.svg)](https://travis-ci.org/cohama/lexima.vim)
 
-The Neosnippet plug-In adds snippet support to Vim. Snippets are
-small templates for commonly used code that you can fill in on the
-fly. To use snippets can increase your productivity in Vim a lot.
-The functionality of this plug-in is quite similar to plug-ins like
-snipMate.vim. But since you can choose snippets with the
-[deoplete](https://github.com/Shougo/deoplete.nvim) interface, you might have
-less trouble using them, because you do not have to remember each snippet name.
+Auto close parentheses and repeat by dot dot dot...
 
-Installation
-------------
+Basically, you can automatically close pairs such as `()`, `{}`, `""`, ...
+But in advance, you can also customize the rule to automatically input
+any character on any context.
 
-To install neosnippet and other Vim plug-ins it is recommended to use one of the
-popular package managers for Vim, rather than installing by drag and drop all
-required files into your `.vim` folder.
+Screen Shots
+-----------
+![Screen Shot](http://i.gyazo.com/af2d7a59c82f93e49a6fd424dbbf6f88.gif)
 
-Notes:
 
-* Vim 7.4 or above is needed.
-
-* Vim 8.0 or above or neovim is recommended.
-
-* Default snippets files are available in:
-  [neosnippet-snippets](https://github.com/Shougo/neosnippet-snippets)
-
-* Installing default snippets is optional. If choose not to install them,
-  you must deactivate them with `g:neosnippet#disable_runtime_snippets`.
-
-* deoplete is not required to use neosnippet, but it's highly recommended.
-
-* Extra snippets files can be found in:
-  [vim-snippets](https://github.com/honza/vim-snippets).
-
-### Vundle
-
-```vim
-Plugin 'Shougo/deoplete.nvim'
-if !has('nvim')
-  Plugin 'roxma/nvim-yarp'
-  Plugin 'roxma/vim-hug-neovim-rpc'
-endif
-
-Plugin 'Shougo/neosnippet.vim'
-Plugin 'Shougo/neosnippet-snippets'
-```
-
-### dein.vim
-
-```vim
-call dein#add('Shougo/deoplete.nvim')
-if !has('nvim')
-  call dein#add('roxma/nvim-yarp')
-  call dein#add('roxma/vim-hug-neovim-rpc')
-endif
-let g:deoplete#enable_at_startup = 1
-
-call dein#add('Shougo/neosnippet.vim')
-call dein#add('Shougo/neosnippet-snippets')
-```
-
-### vim-plug
-
-```vim
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-let g:deoplete#enable_at_startup = 1
-
-Plug 'Shougo/neosnippet.vim'
-Plug 'Shougo/neosnippet-snippets'
-```
-
-Configuration
+DEFAULT RULES
 -------------
 
-This is an example `~/.vimrc` configuration for Neosnippet. It is assumed you
-already have deoplete configured. With the settings of the example, you can use
-the following keys:
+lexima.vim provides some default rules to input pairs.
+(the cursor position is represented by `|`)
 
-* `C-k` to select-and-expand a snippet from the deoplete popup (Use `C-n`
-  and `C-p` to select it). `C-k` can also be used to jump to the next field in
-  the snippet.
+### Basic Rules
+If `g:lexima_enable_basic_rules` is `1`, the following rules are enabled.
+(default value: `1`)
 
-* `Tab` to select the next field to fill in the snippet.
+    Before        Input         After
+    ------------------------------------
+    |             (             (|)
+    ------------------------------------
+    |             "             "|"
+    ------------------------------------
+    ""|           "             """|"""
+    ------------------------------------
+    ''|           '             '''|'''
+    ------------------------------------
+    \|            [             \[|
+    ------------------------------------
+    \|            "             \"|
+    ------------------------------------
+    \|            '             \'|
+    ------------------------------------
+    I|            'm            I'm|
+    ------------------------------------
+    (|)           )             ()|
+    ------------------------------------
+    '|'           '             ''|
+    ------------------------------------
+    (|)           <BS>          |
+    ------------------------------------
+    '|'           <BS>          |
+    ------------------------------------
+
+and much more... (See `g:lexima#default_rules` at `autoload/lexima.vim`)
+
+### New Line Rules
+If `g:lexima_enable_newline_rules` is `1`, the following rules are enabled.
+(default value: `1`)
+
+    Before        Input         After
+    ------------------------------------
+    {|}           <CR>          {
+                                    |
+                                }
+    ------------------------------------
+    {|            <CR>          {
+                                    |
+                                }
+    ------------------------------------
+
+Same as `()` and `[]`.
+
+### Endwise Rules
+If `g:lexima_enable_endwise_rules` is `1`, the following rules are enabled.
+(default value: `1`)
+
+For example, in ruby filetype
+
+    Before        Input         After
+    --------------------------------------
+    if x == 42|   <CR>          if x == 42
+                                    |
+                                end
+    --------------------------------------
+    def foo()|    <CR>          def foo()
+                                    |
+                                end
+    --------------------------------------
+    bar.each do|  <CR>          bar.each do
+                                    |
+                                end
+    --------------------------------------
+
+and same as `module`, `class`, `while` and so on.
+
+In vim filetype, `function`, `if`, `while` ... rules are available.
+And also you can use in sh (zsh) such as `if`, `case`.
+
+
+CUSTOMIZATION
+-------------
+lexima.vim provides highly customizable interface.
+You can define your own rule by using `lexima#add_rule()`.
+
 
 ```vim
-" Plugin key-mappings.
-" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
-
-" SuperTab like snippets behavior.
-" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-"imap <expr><TAB>
-" \ pumvisible() ? "\<C-n>" :
-" \ neosnippet#expandable_or_jumpable() ?
-" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-
-" For conceal markers.
-if has('conceal')
-  set conceallevel=2 concealcursor=niv
-endif
+" Please add below in your vimrc
+call lexima#add_rule({'char': '$', 'input_after': '$', 'filetype': 'latex'})
+call lexima#add_rule({'char': '$', 'at': '\%#\$', 'leave': 1, 'filetype': 'latex'})
+call lexima#add_rule({'char': '<BS>', 'at': '\$\%#\$', 'delete': 1, 'filetype': 'latex'})
 ```
 
-If you want to use a different collection of snippets than the
-built-in ones, then you can set a path to the snippets with
-the `g:neosnippet#snippets_directory` variable (e.g [Honza's
-Snippets](https://github.com/honza/vim-snippets))
+You will get
 
-But if you enable `g:neosnippet#enable_snipmate_compatibility`, neosnippet will
-load snipMate snippets from runtime path automatically.
+    Before  Input   After
+    ---------------------
+    |       $       $|$
+    ---------------------
+    $|$     $       $$|
+    ---------------------
+    $|$     <BS>    |
+    ---------------------
 
-```vim
-" Enable snipMate compatibility feature.
-let g:neosnippet#enable_snipmate_compatibility = 1
+These rules are enabled at only `latex` filetype.
+For more information, please see `:help lexima-customization`
 
-" Tell Neosnippet about the other snippets
-let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
+
+DOT REPEATABLE
+--------------
+If you type `foo("bar`, you get
+```
+foo("bar")
 ```
 
+and once you type `0.`, you finally get
+```
+foo("bar")foo("bar")
+```

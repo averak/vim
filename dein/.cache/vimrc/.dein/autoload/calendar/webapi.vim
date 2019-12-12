@@ -2,7 +2,7 @@
 " Filename: autoload/calendar/webapi.vim
 " Author: itchyny
 " License: MIT License
-" Last Change: 2019/07/30 22:37:55.
+" Last Change: 2019/12/03 12:48:49.
 " =============================================================================
 
 " Web interface.
@@ -147,7 +147,7 @@ endfunction
 function! s:command(url, method, header, postfile, output) abort
   let quote = s:_quote()
   if executable('curl')
-    let command = 'curl -s -k -i -N -X ' . a:method
+    let command = 'curl --http1.1 --suppress-connect-headers -s -k -i -N -X ' . a:method
     let command .= s:make_header_args(a:header, '-H ', quote)
     if a:postfile !=# ''
       let command .= ' --data-binary @' . quote . a:postfile . quote

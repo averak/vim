@@ -35,15 +35,17 @@ augroup END
 
 
 "" -----*----- Shortcuts -----*----- ""
-nnoremap c <UP>
-nnoremap t <DOWN>
-nnoremap h <LEFT>
-nnoremap n <RIGHT>
+""htkn to  arrow
+nnoremap k k
+nnoremap t j
+nnoremap h h
+nnoremap n l
 
-vnoremap c <UP>
-vnoremap t <DOWN>
-vnoremap h <LEFT>
-vnoremap n <RIGHT>
+vnoremap k k
+vnoremap t j
+vnoremap h h
+vnoremap n l
+
 "" dein.vim
 :command PlugUpdate call dein#update()
 :command PlugInstall call dein#install()
@@ -132,6 +134,7 @@ set scrolloff=3
 set laststatus=2
 set modeline
 set modelines=10
+set wildmenu
 set title
 set titleold="Terminal"
 set titlestring=%F

@@ -1,24 +1,31 @@
-<!-- ISSUES NOT FOLLOWING THIS TEMPLATE WILL BE CLOSED AND DELETED -->
+# Problems summary
 
-<!-- Check all that apply [x] -->
 
-- [ ] I have read through https://github.com/junegunn/fzf.vim/blob/master/README.md
-- [ ] I have read through https://github.com/junegunn/fzf/blob/master/README-VIM.md
-- [ ] I have read through the manual page of fzf (`man fzf`)
-- [ ] I have searched through the existing issues
+## Expected
 
-<!--
 
-Before submitting
-=================
+## Environment Information
+ * OS:
+ * Vim version:
 
-- Make sure that you have the latest version of fzf and fzf.vim
-- Check if your problem is reproducible with a minimal configuration
 
-Start Vim with a minimal configuration
-======================================
+## Provide a minimal .vimrc with less than 50 lines (Required!)
 
-vim -Nu <(curl https://gist.githubusercontent.com/junegunn/6936bf79fedd3a079aeb1dd2f3c81ef5/raw)
+```vim
+" Your minimal .vimrc
+set runtimepath+=~/path/to/neocomplete.nvim/
+let g:neocomplete#enable_at_startup = 1
+```
 
--->
 
+## The reproduce ways from Vim starting (Required!)
+
+ 1. foo
+ 2. bar
+ 3. baz
+
+
+## Screen shot (if possible)
+
+
+## Upload the log messages by `:redir` and `:message`
