@@ -9,11 +9,3 @@ on_source = ['unite.vim']
 repo  = 'raimon49/requirements.txt.vim'
 on_ft = ['python']
 
-[[plugins]]
-repo  = 'jelera/vim-javascript-syntax'
-on_ft = ['javascript']
-
-[[plugins]]
-repo  = 'arnaud-lb/vim-php-namespace'
-on_ft = ['php']
-

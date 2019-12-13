@@ -175,8 +175,6 @@ call gina#custom#command#option('diff', '--opener', 'vsplit')
 [[plugins]]
 repo = 'alvan/vim-closetag'
 [[plugins]]
-repo = 'valloric/matchtagalways'
-[[plugins]]
 repo = 'hail2u/vim-css3-syntax'
 [[plugins]]
 repo = 'gorodinskiy/vim-coloresque'

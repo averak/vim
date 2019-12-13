@@ -1,137 +1,102 @@
-lexima.vim
-==========
-[![Build Status](https://travis-ci.org/cohama/lexima.vim.svg)](https://travis-ci.org/cohama/lexima.vim)
+# TwitVim - Twitter client for Vim
 
-Auto close parentheses and repeat by dot dot dot...
+## Introduction
 
-Basically, you can automatically close pairs such as `()`, `{}`, `""`, ...
-But in advance, you can also customize the rule to automatically input
-any character on any context.
+TwitVim is a Vim plugin that allows you to post to Twitter and view Twitter
+timelines. It is an enhancement of [vimscript #2124](http://www.vim.org/scripts/script.php?script\_id=2124)
+by Travis Jeffery. Credit goes to Travis for the original script concept and implementation.
 
-Screen Shots
------------
-![Screen Shot](http://i.gyazo.com/af2d7a59c82f93e49a6fd424dbbf6f88.gif)
+TwitVim supports most of the features of a typical Twitter client, including:
 
+- Friends, User, Direct Message, Mentions, and Favorites timelines
+- Twitter Search
+- Replying and retweeting
+- Hashtags (jump to search timeline)
+- In reply to (See which tweet an @-reply is for.)
+- Opening links in a browser
+- User profile display
+- Twitter List viewing and managing
+- Trending topics
+- Timeline filtering
 
-DEFAULT RULES
--------------
+## Prerequisites
 
-lexima.vim provides some default rules to input pairs.
-(the cursor position is represented by `|`)
+TwitVim uses [cURL](http://curl.haxx.se/) to communicate with Twitter.
+Alternatively, you can configure TwitVim to use Vim's Perl, Python, Ruby, or
+Tcl interfaces for faster network I/O.
 
-### Basic Rules
-If `g:lexima_enable_basic_rules` is `1`, the following rules are enabled.
-(default value: `1`)
+Twitter OAuth requires either the [OpenSSL](http://www.openssl.org/)
+software or a Vim binary compiled with Perl, Python, Ruby, or Tcl.
 
-    Before        Input         After
-    ------------------------------------
-    |             (             (|)
-    ------------------------------------
-    |             "             "|"
-    ------------------------------------
-    ""|           "             """|"""
-    ------------------------------------
-    ''|           '             '''|'''
-    ------------------------------------
-    \|            [             \[|
-    ------------------------------------
-    \|            "             \"|
-    ------------------------------------
-    \|            '             \'|
-    ------------------------------------
-    I|            'm            I'm|
-    ------------------------------------
-    (|)           )             ()|
-    ------------------------------------
-    '|'           '             ''|
-    ------------------------------------
-    (|)           <BS>          |
-    ------------------------------------
-    '|'           <BS>          |
-    ------------------------------------
+Some platforms already have cURL and OpenSSL preinstalled or have
+installation packages for those, so that is the easier way to satisfy the
+prerequisites.
 
-and much more... (See `g:lexima#default_rules` at `autoload/lexima.vim`)
+## Installation
 
-### New Line Rules
-If `g:lexima_enable_newline_rules` is `1`, the following rules are enabled.
-(default value: `1`)
+Use one of the methods below, depending on which plugin manager (or not)
+you have. After installation, see ```:help TwitVim-install``` for
+further instructions.
 
-    Before        Input         After
-    ------------------------------------
-    {|}           <CR>          {
-                                    |
-                                }
-    ------------------------------------
-    {|            <CR>          {
-                                    |
-                                }
-    ------------------------------------
+### Pathogen
 
-Same as `()` and `[]`.
+Use the following commands:
 
-### Endwise Rules
-If `g:lexima_enable_endwise_rules` is `1`, the following rules are enabled.
-(default value: `1`)
+    cd ~/.vim/bundle
+    git clone https://github.com/twitvim/twitvim.git
 
-For example, in ruby filetype
+### Vundle
 
-    Before        Input         After
-    --------------------------------------
-    if x == 42|   <CR>          if x == 42
-                                    |
-                                end
-    --------------------------------------
-    def foo()|    <CR>          def foo()
-                                    |
-                                end
-    --------------------------------------
-    bar.each do|  <CR>          bar.each do
-                                    |
-                                end
-    --------------------------------------
+Add the following to your vimrc:
 
-and same as `module`, `class`, `while` and so on.
+    Plugin 'https://github.com/twitvim/twitvim.git'
 
-In vim filetype, `function`, `if`, `while` ... rules are available.
-And also you can use in sh (zsh) such as `if`, `case`.
+Install with ```:PluginInstall```.
 
+### Vimball file
 
-CUSTOMIZATION
--------------
-lexima.vim provides highly customizable interface.
-You can define your own rule by using `lexima#add_rule()`.
+Open the vmb file and then source it.
 
+    vim twitvim-0.9.1.vmb
+    :so %
 
-```vim
-" Please add below in your vimrc
-call lexima#add_rule({'char': '$', 'input_after': '$', 'filetype': 'latex'})
-call lexima#add_rule({'char': '$', 'at': '\%#\$', 'leave': 1, 'filetype': 'latex'})
-call lexima#add_rule({'char': '<BS>', 'at': '\$\%#\$', 'delete': 1, 'filetype': 'latex'})
-```
+## Usage
 
-You will get
+### Plugin commands
 
-    Before  Input   After
-    ---------------------
-    |       $       $|$
-    ---------------------
-    $|$     $       $$|
-    ---------------------
-    $|$     <BS>    |
-    ---------------------
+- :PosttoTwitter - This command will prompt you for a message to send to Twitter.
+- :CPosttoTwitter - This command posts the current line in the current buffer
+  to Twitter.
+- :BPosttoTwitter - This command posts the current buffer to Twitter.
+- :FriendsTwitter - View friends timeline.
+- :UserTwitter - View your timeline.
+- :MentionsTwitter - View @-mentions.
+- :PublicTwitter - View public timeline.
+- :DMTwitter - View direct messages.
+- :SearchTwitter - Use Twitter Search.
 
-These rules are enabled at only `latex` filetype.
-For more information, please see `:help lexima-customization`
+### Global mappings
 
+- Alt-T - In Visual select mode, the Alt-T key posts the selected text to
+  Twitter. Use this mapping if you compose your tweets in a separate
+  scratch buffer.
+- Ctrl-T - Use this instead if the menu bar is enabled or if Alt-T is not
+  available on your platform.
 
-DOT REPEATABLE
---------------
-If you type `foo("bar`, you get
-```
-foo("bar")
-```
+### Timeline buffer mappings
 
-and once you type `0.`, you finally get
-```
-foo("bar")foo("bar")
-```
+- Alt-R or <Leader\>r - Starts a @-reply. (in timeline buffer)
+- Alt-D or <Leader\>d - Starts a direct message. (in timeline buffer)
+
+Many more commands and mappings are available.
+See TwitVim's help documentation for full details.
+
+## License
+
+TwitVim is distributed under the same terms as Vim itself.
+See ```:help license```.
+
+## Contact
+
+- [@mortonfox](https://twitter.com/mortonfox) - The maintainer
+- [@twitvim](https://twitter.com/twitvim) - TwitVim announcements

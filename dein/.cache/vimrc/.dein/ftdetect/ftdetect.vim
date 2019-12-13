@@ -1,11 +1,5 @@
 " Detect syntax file.
 autocmd BufNewFile,BufRead *.snip,*.snippets set filetype=neosnippet
-function! s:DetectJS()
-    if getline(1) =~# '^#!.*/bin/\(env\s\+\)\?node\>'
-        setfiletype javascript
-    endif
-endfunction
-autocmd BufNewFile,BufRead * call s:DetectJS()
 " the Requirements File Format syntax support for Vim
 " Version: 1.5.1
 " Author:  raimon <raimon49@hotmail.com>
