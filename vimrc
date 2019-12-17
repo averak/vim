@@ -143,7 +143,8 @@ set autoread
 set noerrorbells visualbell t_vb=
 set clipboard+=unnamed,autoselect
 set mouse=a
-set whichwrap=b,s,<,>,[,]
+"set whichwrap=b,s,<,>,[,]
+set whichwrap=h,l
 highlight Pmenu ctermbg=233 ctermfg=241
 highlight PmenuSel ctermbg=233 ctermfg=166
 highlight Search ctermbg=166 ctermfg=233

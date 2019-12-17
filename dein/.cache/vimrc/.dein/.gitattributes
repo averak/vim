@@ -1,7 +1,7 @@
-.gitignore export-ignore
+.travis.yml    export-ignore
 .gitattributes export-ignore
-README.md export-ignore
-/spec export-ignore
-Gemfile export-ignore
-Gemfile.lock export-ignore
-.travis.yml export-ignore
+.gitignore     export-ignore
+doc/tags       export-ignore
+*.md           export-ignore
+zip            export-ignore
+test/*         export-ignore

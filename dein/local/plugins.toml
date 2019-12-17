@@ -35,15 +35,6 @@ colorscheme darktheme
 [[plugins]]
 repo = 'cohama/lexima.vim'
 
-# Git
-[[plugins]]
-repo = 'prabirshrestha/vim-lsp'
-on_ft = ['python', 'go']
-depends = ['async.vim', 'deoplete-vim-lsp']
-hook_add = '''
-let g:lsp_diagnostics_echo_cursor = 1
-'''
-
 # Markdown
 [[plugins]]
 repo = 'kannokanno/previm'
@@ -207,3 +198,5 @@ repo = 'kazukazuinaina/Weather.vim'
 [[plugins]]
 repo = 'itchyny/calendar.vim'
 
+[[plugins]]
+repo = 'andymass/vim-matchup'
