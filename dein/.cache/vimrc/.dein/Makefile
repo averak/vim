@@ -1,8 +1,5 @@
-.PHONY: test install-dev
 
-test: test/vim-themis
-	test/vim-themis/bin/themis --reporter dot test
+release:
+	git archive HEAD plugin autoload doc lang --output=open-browser-$(shell git describe --tags HEAD).zip
 
-
-test/vim-themis:
-	git clone git://github.com/thinca/vim-themis test/vim-themis
+.PHONY: release

@@ -11,7 +11,7 @@
 let mapleader="\<Space>"
 
 "" vimshell
-nnoremap <Leader>sh :vertical terminal<CR>
+nnoremap <Leader>ter :vertical terminal<CR>
 let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
 let g:vimshell_prompt =  '$ '
 
