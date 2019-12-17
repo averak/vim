@@ -110,6 +110,7 @@ let g:NERDTreeWinSize = 30
 let NERDTreeShowHidden=1
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
 autocmd BufWritePre * :FixWhitespace
+let g:NERDTreeMapOpenInTab='d'
 map <Leader>dir :NERDTreeToggle<CR>
 '''
 [[plugins]]
