@@ -15,11 +15,6 @@ nnoremap <Leader>ter :vertical terminal<CR>
 let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
 let g:vimshell_prompt =  '$ '
 
-"" syntastic
-let g:syntastic_python_checkers=['python', 'flake8']
-let g:polyglot_disabled = ['python']
-let python_highlight_all = 1
-
 "言語別にインデントを分ける"
 augroup fileTypeIndent
   autocmd!
