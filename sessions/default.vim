@@ -380,6 +380,8 @@ endif
 set shortmess=aoO
 argglobal
 %argdel
+$argadd .gitignore
+edit .gitignore
 set splitbelow splitright
 wincmd t
 set winminheight=0
@@ -387,7 +389,6 @@ set winheight=1
 set winminwidth=0
 set winwidth=1
 argglobal
-enew
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -510,7 +511,15 @@ setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
+silent! normal! zE
+let s:l = 3 - ((2 * winheight(0) + 31) / 63)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+3
+normal! 011|
 tabnext 1
+badd +0 .gitignore
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0
   silent exe 'bwipe ' . s:wipebuf
 endif
