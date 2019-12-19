@@ -151,12 +151,6 @@ repo = 'vim-airline/vim-airline-themes'
 
 ## -----*----- コード補完 -----*----- ##
 [[plugins]]
-repo = 'Shougo/neocomplete.vim'
-[[plugins]]
-repo = 'Shougo/neosnippet.vim'
-[[plugins]]
-repo = 'Shougo/neosnippet-snippets'
-[[plugins]]
 repo = 'sheerun/vim-polyglot'
 [[plugins]]
 repo = 'ervandew/supertab'
