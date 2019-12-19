@@ -2,6 +2,7 @@ let SessionLoad = 1
 if &cp | set nocp | endif
 let s:cpo_save=&cpo
 set cpo&vim
+inoremap <silent> <expr> <BS> lexima#expand('<BS>', 'i')
 imap <S-Tab> <Plug>SuperTabBackward
 inoremap <C-Tab> 	
 inoremap <silent> <expr> <Plug>(neosnippet_start_unite_snippet) unite#sources#neosnippet#start_complete()
@@ -62,7 +63,9 @@ nmap  B
 vmap  :w !pbcopy
 nmap  $
 nmap  W
+snoremap  a<BS>
 nnoremap 	 gt
+snoremap  a<BS>
 nnoremap <silent>  :PrevimOpen
 vmap  <Plug>TwitvimVisual
 vmap  :!pbcopy
@@ -92,8 +95,8 @@ nmap <silent>  rf <Plug>(coc-references)
 nmap <silent>  df <Plug>(coc-definition)
 nmap <silent>  h :call CocAction('doHover')
 nmap <silent>    :CocList
-map  dir :NERDTreeToggle
 map  go :QuickRun
+map  dir :NERDTreeToggle
 nnoremap  t :tabnew
 nnoremap  v :vsplit
 nnoremap  s :split
@@ -117,32 +120,35 @@ xmap <silent> ]% <Plug>(matchup-]%)
 nmap <silent> ]% <Plug>(matchup-]%)
 omap <silent> a% <Plug>(matchup-a%)
 xmap <silent> a% <Plug>(matchup-a%)
-vmap gx <Plug>NetrwBrowseXVis
+xmap gx <Plug>NetrwBrowseXVis
 nmap gx <Plug>NetrwBrowseX
 omap <silent> g% <Plug>(matchup-g%)
 xmap <silent> g% <Plug>(matchup-g%)
 nmap <silent> g% <Plug>(matchup-g%)
 nmap ga <Plug>(EasyAlign)
 xmap ga <Plug>(EasyAlign)
-vnoremap h h
+xnoremap h h
 nnoremap h h
 omap <silent> i% <Plug>(matchup-i%)
 xmap <silent> i% <Plug>(matchup-i%)
-vnoremap k k
+xnoremap k k
 nnoremap k k
-vnoremap n l
+xnoremap n l
 nnoremap n l
-vnoremap t j
+xnoremap t j
 nnoremap t j
 omap <silent> z% <Plug>(matchup-z%)
 xmap <silent> z% <Plug>(matchup-z%)
 nmap <silent> z% <Plug>(matchup-z%)
+snoremap <C-H> a<BS>
+snoremap <Del> a<BS>
+snoremap <BS> a<BS>
 vnoremap <silent> <Plug>NetrwBrowseXVis :call netrw#BrowseXVis()
 nnoremap <silent> <Plug>NetrwBrowseX :call netrw#BrowseX(netrw#GX(),netrw#CheckIfRemote(netrw#GX()))
 nnoremap <Plug>(twitvim-PosttoTwitter) :call twitvim#CmdLine_Twitter('', 0)
 vmap <C-T> <Plug>TwitvimVisual
 vmap <M-t> <Plug>TwitvimVisual
-noremap <SNR>92_Visual y:call twitvim#post_twitter(@", 0)
+noremap <SNR>90_Visual y:call twitvim#post_twitter(@", 0)
 vnoremap <silent> <Plug>(quickrun) :QuickRun -mode v
 nnoremap <silent> <Plug>(quickrun) :QuickRun -mode n
 nnoremap <silent> <Plug>(quickrun-op) :set operatorfunc=quickrun#operatorg@
@@ -167,21 +173,21 @@ onoremap <silent> <Plug>(matchup-i%) :call matchup#text_obj#delimited(1, 0, 'd
 xnoremap <silent> <Plug>(matchup-a%) :call matchup#text_obj#delimited(0, 1, 'delim_all')
 xnoremap <silent> <Plug>(matchup-i%) :call matchup#text_obj#delimited(1, 1, 'delim_all')
 onoremap <silent> <Plug>(matchup-z%) :call matchup#motion#op('z%')
-xnoremap <silent> <SNR>43_(matchup-z%) :call matchup#motion#jump_inside(1)
+xnoremap <silent> <SNR>41_(matchup-z%) :call matchup#motion#jump_inside(1)
 nnoremap <silent> <Plug>(matchup-z%) :call matchup#motion#jump_inside(0)
 onoremap <silent> <Plug>(matchup-[%) :call matchup#motion#op('[%')
 onoremap <silent> <Plug>(matchup-]%) :call matchup#motion#op(']%')
-xnoremap <silent> <SNR>43_(matchup-[%) :call matchup#motion#find_unmatched(1, 0)
-xnoremap <silent> <SNR>43_(matchup-]%) :call matchup#motion#find_unmatched(1, 1)
+xnoremap <silent> <SNR>41_(matchup-[%) :call matchup#motion#find_unmatched(1, 0)
+xnoremap <silent> <SNR>41_(matchup-]%) :call matchup#motion#find_unmatched(1, 1)
 nnoremap <silent> <Plug>(matchup-[%) :call matchup#motion#find_unmatched(0, 0)
 nnoremap <silent> <Plug>(matchup-]%) :call matchup#motion#find_unmatched(0, 1)
 onoremap <silent> <Plug>(matchup-g%) :call matchup#motion#op('g%')
-xnoremap <silent> <SNR>43_(matchup-g%) :call matchup#motion#find_matching_pair(1, 0)
+xnoremap <silent> <SNR>41_(matchup-g%) :call matchup#motion#find_matching_pair(1, 0)
 onoremap <silent> <Plug>(matchup-%) :call matchup#motion#op('%')
-xnoremap <silent> <SNR>43_(matchup-%) :call matchup#motion#find_matching_pair(1, 1)
+xnoremap <silent> <SNR>41_(matchup-%) :call matchup#motion#find_matching_pair(1, 1)
 nnoremap <silent> <Plug>(matchup-g%) :call matchup#motion#find_matching_pair(0, 0)
 nnoremap <silent> <Plug>(matchup-%) :call matchup#motion#find_matching_pair(0, 1)
-nnoremap <silent> <expr> <SNR>43_(wise) empty(g:v_motion_force) ? 'v' : g:v_motion_force
+nnoremap <silent> <expr> <SNR>41_(wise) empty(g:v_motion_force) ? 'v' : g:v_motion_force
 nnoremap <silent> <Plug>(matchup-hi-surround) :call matchup#matchparen#highlight_surrounding()
 onoremap <silent> <Plug>(fzf-maps-o) :call fzf#vim#maps('o', 0)
 xnoremap <silent> <Plug>(fzf-maps-x) :call fzf#vim#maps('x', 0)
@@ -305,7 +311,7 @@ nmap <C-E> $
 vmap <C-C> :w !pbcopy
 vmap <C-X> :!pbcopy
 nnoremap <S-Tab> gT
-vmap <BS> "-d
+xmap <BS> "-d
 vmap <D-x> "*d
 vmap <D-c> "*y
 vmap <D-v> "-d"*P
@@ -316,6 +322,7 @@ imap  $
 imap  W
 imap <silent> % <Plug>(matchup-c_g%)
 imap 	 <Plug>SuperTabForward
+inoremap <silent> <expr>  lexima#expand('<CR>', 'i')
 imap m <Plug>(emmet-merge-lines)
 imap A <Plug>(emmet-anchorize-summary)
 imap a <Plug>(emmet-anchorize-url)
@@ -332,7 +339,17 @@ imap u <Plug>(emmet-update-tag)
 imap ; <Plug>(emmet-expand-word)
 imap , <Plug>(emmet-expand-abbr)
 inoremap  
+inoremap <silent> <expr>   lexima#expand('<SPACE>', 'i')
+inoremap <silent> <expr> " lexima#expand('"', 'i')
+inoremap <silent> <expr> ' lexima#expand('''', 'i')
+inoremap <silent> <expr> ( lexima#expand('(', 'i')
+inoremap <silent> <expr> ) lexima#expand(')', 'i')
 vmap ô <Plug>TwitvimVisual
+inoremap <silent> <expr> [ lexima#expand('[', 'i')
+inoremap <silent> <expr> ] lexima#expand(']', 'i')
+inoremap <silent> <expr> ` lexima#expand('`', 'i')
+inoremap <silent> <expr> { lexima#expand('{', 'i')
+inoremap <silent> <expr> } lexima#expand('}', 'i')
 let &cpo=s:cpo_save
 unlet s:cpo_save
 set autoread
@@ -349,12 +366,11 @@ set hidden
 set hlsearch
 set ignorecase
 set incsearch
-set iskeyword=@,48-57,_,192-255,#,-,.
 set laststatus=2
 set modelines=10
 set mouse=a
 set ruler
-set runtimepath=~/.vim,/usr/local/share/vim/vimfiles,~/.vim/dein/repos/github.com/junegunn/fzf,~/.vim/dein/repos/github.com/neoclide/coc.nvim_release,~/.vim/dein/repos/github.com/Shougo/dein.vim,~/.vim/dein/repos/github.com/junegunn/fzf,~/.vim/dein/repos/github.com/neoclide/coc.nvim_release,~/.vim/dein/repos/github.com/Shougo/dein.vim,~/.vim/dein/.cache/vimrc/.dein,/usr/local/share/vim/vim82,~/.vim/dein/.cache/vimrc/.dein/after,/usr/local/share/vim/vimfiles/after,~/.vim/after
+set runtimepath=~/.vim,/usr/local/share/vim/vimfiles,~/.vim/dein/repos/github.com/junegunn/fzf,~/.vim/dein/repos/github.com/neoclide/coc.nvim_release,~/.vim/dein/repos/github.com/Shougo/dein.vim,~/.vim/dein/.cache/vimrc/.dein,/usr/local/share/vim/vim82,~/.vim/dein/.cache/vimrc/.dein/after,/usr/local/share/vim/vimfiles/after,~/.vim/after
 set scrolloff=3
 set shiftwidth=4
 set smartcase
@@ -381,7 +397,8 @@ endif
 set shortmess=aoO
 argglobal
 %argdel
-edit vimrc
+$argadd .gitignore
+edit .gitignore
 set splitbelow splitright
 wincmd t
 set winminheight=0
@@ -389,18 +406,7 @@ set winheight=1
 set winminwidth=0
 set winwidth=1
 argglobal
-vnoremap <buffer> <silent> [" :exe "normal! gv"|call search('\%(^\s*".*\n\)\%(^\s*"\)\@!', "bW")
-nnoremap <buffer> <silent> [" :call search('\%(^\s*".*\n\)\%(^\s*"\)\@!', "bW")
-vnoremap <buffer> <silent> [] m':exe "normal! gv"|call search('^\s*endf\%[unction]\>', "bW")
-nnoremap <buffer> <silent> [] m':call search('^\s*endf\%[unction]\>', "bW")
-vnoremap <buffer> <silent> [[ m':exe "normal! gv"|call search('^\s*fu\%[nction]\>', "bW")
-nnoremap <buffer> <silent> [[ m':call search('^\s*fu\%[nction]\>', "bW")
-vnoremap <buffer> <silent> ]" :exe "normal! gv"|call search('^\(\s*".*\n\)\@<!\(\s*"\)', "W")
-nnoremap <buffer> <silent> ]" :call search('^\(\s*".*\n\)\@<!\(\s*"\)', "W")
-vnoremap <buffer> <silent> ][ m':exe "normal! gv"|call search('^\s*endf\%[unction]\>', "W")
-nnoremap <buffer> <silent> ][ m':call search('^\s*endf\%[unction]\>', "W")
-vnoremap <buffer> <silent> ]] m':exe "normal! gv"|call search('^\s*fu\%[nction]\>', "W")
-nnoremap <buffer> <silent> ]] m':call search('^\s*fu\%[nction]\>', "W")
+inoremap <buffer> <nowait> <silent>  =lexima#insmode#escape()
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent
@@ -417,8 +423,8 @@ setlocal cinkeys=0{,0},0),0],:,0#,!^F,o,O,e
 setlocal cinoptions=
 setlocal cinwords=if,else,while,do,for,switch
 setlocal colorcolumn=
-setlocal comments=sO:\"\ -,mO:\"\ \ ,eO:\"\",:\"
-setlocal commentstring=\"%s
+setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
+setlocal commentstring=/*%s*/
 setlocal complete=.,w,b,u,t,i
 setlocal concealcursor=
 setlocal conceallevel=0
@@ -435,8 +441,8 @@ setlocal nodiff
 setlocal equalprg=
 setlocal errorformat=
 setlocal expandtab
-if &filetype != 'vim'
-setlocal filetype=vim
+if &filetype != ''
+setlocal filetype=
 endif
 setlocal fixendofline
 setlocal foldcolumn=0
@@ -450,7 +456,7 @@ setlocal foldminlines=1
 setlocal foldnestmax=20
 setlocal foldtext=foldtext()
 setlocal formatexpr=
-setlocal formatoptions=croql
+setlocal formatoptions=tcq
 setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
 setlocal formatprg=
 setlocal grepprg=
@@ -458,11 +464,11 @@ setlocal iminsert=0
 setlocal imsearch=-1
 setlocal include=
 setlocal includeexpr=
-setlocal indentexpr=GetVimIndent()
-setlocal indentkeys=0{,0},0),0],:,0#,!^F,o,O,e,=end,=else,=cat,=fina,=END,0\\,0=\"\\\ 
+setlocal indentexpr=
+setlocal indentkeys=0{,0},0),0],:,0#,!^F,o,O,e
 setlocal noinfercase
-setlocal iskeyword=@,48-57,_,192-255,#,-,.
-setlocal keywordprg=:help
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
 setlocal nolinebreak
 setlocal nolisp
 setlocal lispwords=
@@ -487,13 +493,13 @@ setlocal norightleft
 setlocal rightleftcmd=search
 setlocal noscrollbind
 setlocal scrolloff=-1
-setlocal shiftwidth=2
+setlocal shiftwidth=4
 setlocal noshortname
 setlocal showbreak=
 setlocal sidescrolloff=-1
 setlocal signcolumn=auto
 setlocal nosmartindent
-setlocal softtabstop=2
+setlocal softtabstop=0
 setlocal nospell
 setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
 setlocal spellfile=
@@ -502,10 +508,10 @@ setlocal statusline=%!airline#statusline(1)
 setlocal suffixesadd=
 setlocal noswapfile
 setlocal synmaxcol=3000
-if &syntax != 'vim'
-setlocal syntax=vim
+if &syntax != ''
+setlocal syntax=
 endif
-setlocal tabstop=2
+setlocal tabstop=4
 setlocal tagcase=
 setlocal tagfunc=
 setlocal tags=
@@ -520,18 +526,18 @@ setlocal varsofttabstop=
 setlocal vartabstop=
 setlocal wincolor=
 setlocal nowinfixheight
-setlocal winfixwidth
+setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 195 - ((62 * winheight(0) + 31) / 63)
+let s:l = 3 - ((2 * winheight(0) + 31) / 63)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-195
-normal! 0
+3
+normal! 011|
 tabnext 1
-badd +195 vimrc
+badd +0 .gitignore
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0
   silent exe 'bwipe ' . s:wipebuf
 endif
