@@ -34,13 +34,15 @@ let s:filetype_overrides = {
       \ 'vimshell': ['vimshell','%{vimshell#get_status_string()}'],
       \ }
 
-if exists(':Gina') && (v:version > 704 || (v:version == 704 && has("patch1898")))
+if airline#util#has_gina() && get(g:, 'airline#extensions#gina_status', 1)
   " Gina needs the Vim 7.4.1898, which introduce the <mods> flag for custom commands
   let s:filetype_overrides['gina-status'] = ['gina', '%{gina#component#repo#preset()}' ]
   let s:filetype_overrides['diff'] = ['gina', '%{gina#component#repo#preset()}' ]
   let s:filetype_overrides['gina-log'] = ['gina', '%{gina#component#repo#preset()}' ]
   let s:filetype_overrides['gina-tag'] = ['gina', '%{gina#component#repo#preset()}' ]
   let s:filetype_overrides['gina-branch'] = ['gina', '%{gina#component#repo#branch()}' ]
+  let s:filetype_overrides['gina-reflog'] = ['gina', '%{gina#component#repo#branch()}' ]
+  let s:filetype_overrides['gina-ls'] = ['gina', '%{gina#component#repo#branch()}' ]
 endif
 
 if get(g:, 'airline#extensions#nerdtree_statusline', 1)
@@ -230,6 +232,7 @@ function! airline#extensions#load()
   endif
 
   if get(g:, 'airline#extensions#vista#enabled', 1)
+        \ && exists(':Vista')
     call airline#extensions#vista#init(s:ext)
     call add(s:loaded_ext, 'vista')
   endif
@@ -252,6 +255,7 @@ function! airline#extensions#load()
 
   if get(g:, 'airline#extensions#branch#enabled', 1) && (
           \ airline#util#has_fugitive() ||
+          \ airline#util#has_gina() ||
           \ airline#util#has_lawrencium() ||
           \ airline#util#has_vcscommand() ||
           \ airline#util#has_custom_scm())

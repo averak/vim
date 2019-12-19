@@ -135,6 +135,14 @@ function! airline#util#has_fugitive()
   return s:has_fugitive
 endfunction
 
+function! airline#util#has_gina()
+  if !exists("s:has_gina")
+    let s:has_gina = (exists(':Gina') && v:version >= 800)
+  endif
+  return s:has_gina
+endfunction
+
+
 function! airline#util#has_lawrencium()
   if !exists("s:has_lawrencium")
     let s:has_lawrencium  = exists('*lawrencium#statusline')
@@ -160,4 +168,13 @@ endfunction
 function! airline#util#themes(match)
   let files = split(globpath(&rtp, 'autoload/airline/themes/'.a:match.'*.vim'), "\n")
   return sort(map(files, 'fnamemodify(v:val, ":t:r")') + ['random'])
+endfunction
+
+function! airline#util#stl_disabled()
+  " setting the statusline is disabled,
+  " either globally or per window
+  " w:airline_disabled is deprecated!
+  return get(g:, 'airline_disable_statusline', 0) ||
+   \ airline#util#getwinvar(winnr(), 'airline_disable_statusline', 0) ||
+   \ airline#util#getwinvar(winnr(), 'airline_disabled', 0)
 endfunction
