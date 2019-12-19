@@ -2,7 +2,6 @@ let SessionLoad = 1
 if &cp | set nocp | endif
 let s:cpo_save=&cpo
 set cpo&vim
-inoremap <silent> <expr> <BS> lexima#expand('<BS>', 'i')
 imap <S-Tab> <Plug>SuperTabBackward
 inoremap <C-Tab> 	
 inoremap <silent> <expr> <Plug>(neosnippet_start_unite_snippet) unite#sources#neosnippet#start_complete()
@@ -63,9 +62,7 @@ nmap  B
 vmap  :w !pbcopy
 nmap  $
 nmap  W
-snoremap  a<BS>
 nnoremap 	 gt
-snoremap  a<BS>
 nnoremap <silent>  :PrevimOpen
 vmap  <Plug>TwitvimVisual
 vmap  :!pbcopy
@@ -120,29 +117,26 @@ xmap <silent> ]% <Plug>(matchup-]%)
 nmap <silent> ]% <Plug>(matchup-]%)
 omap <silent> a% <Plug>(matchup-a%)
 xmap <silent> a% <Plug>(matchup-a%)
-xmap gx <Plug>NetrwBrowseXVis
+vmap gx <Plug>NetrwBrowseXVis
 nmap gx <Plug>NetrwBrowseX
 omap <silent> g% <Plug>(matchup-g%)
 xmap <silent> g% <Plug>(matchup-g%)
 nmap <silent> g% <Plug>(matchup-g%)
 nmap ga <Plug>(EasyAlign)
 xmap ga <Plug>(EasyAlign)
-xnoremap h h
+vnoremap h h
 nnoremap h h
 omap <silent> i% <Plug>(matchup-i%)
 xmap <silent> i% <Plug>(matchup-i%)
-xnoremap k k
+vnoremap k k
 nnoremap k k
-xnoremap n l
+vnoremap n l
 nnoremap n l
-xnoremap t j
+vnoremap t j
 nnoremap t j
 omap <silent> z% <Plug>(matchup-z%)
 xmap <silent> z% <Plug>(matchup-z%)
 nmap <silent> z% <Plug>(matchup-z%)
-snoremap <C-H> a<BS>
-snoremap <Del> a<BS>
-snoremap <BS> a<BS>
 vnoremap <silent> <Plug>NetrwBrowseXVis :call netrw#BrowseXVis()
 nnoremap <silent> <Plug>NetrwBrowseX :call netrw#BrowseX(netrw#GX(),netrw#CheckIfRemote(netrw#GX()))
 nnoremap <Plug>(twitvim-PosttoTwitter) :call twitvim#CmdLine_Twitter('', 0)
@@ -311,7 +305,7 @@ nmap <C-E> $
 vmap <C-C> :w !pbcopy
 vmap <C-X> :!pbcopy
 nnoremap <S-Tab> gT
-xmap <BS> "-d
+vmap <BS> "-d
 vmap <D-x> "*d
 vmap <D-c> "*y
 vmap <D-v> "-d"*P
@@ -322,7 +316,6 @@ imap  $
 imap  W
 imap <silent> % <Plug>(matchup-c_g%)
 imap 	 <Plug>SuperTabForward
-inoremap <silent> <expr>  lexima#expand('<CR>', 'i')
 imap m <Plug>(emmet-merge-lines)
 imap A <Plug>(emmet-anchorize-summary)
 imap a <Plug>(emmet-anchorize-url)
@@ -339,17 +332,7 @@ imap u <Plug>(emmet-update-tag)
 imap ; <Plug>(emmet-expand-word)
 imap , <Plug>(emmet-expand-abbr)
 inoremap  
-inoremap <silent> <expr>   lexima#expand('<SPACE>', 'i')
-inoremap <silent> <expr> " lexima#expand('"', 'i')
-inoremap <silent> <expr> ' lexima#expand('''', 'i')
-inoremap <silent> <expr> ( lexima#expand('(', 'i')
-inoremap <silent> <expr> ) lexima#expand(')', 'i')
 vmap ô <Plug>TwitvimVisual
-inoremap <silent> <expr> [ lexima#expand('[', 'i')
-inoremap <silent> <expr> ] lexima#expand(']', 'i')
-inoremap <silent> <expr> ` lexima#expand('`', 'i')
-inoremap <silent> <expr> { lexima#expand('{', 'i')
-inoremap <silent> <expr> } lexima#expand('}', 'i')
 let &cpo=s:cpo_save
 unlet s:cpo_save
 set autoread
@@ -405,7 +388,6 @@ set winminwidth=0
 set winwidth=1
 argglobal
 enew
-inoremap <buffer> <nowait> <silent>  =lexima#insmode#escape()
 setlocal keymap=
 setlocal noarabic
 setlocal noautoindent

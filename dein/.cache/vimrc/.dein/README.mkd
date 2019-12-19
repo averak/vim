@@ -1,154 +1,179 @@
-# Emmet-vim
+# vimproc
 
+[![Travis Build Status](https://travis-ci.org/Shougo/vimproc.vim.svg?branch=master)](https://travis-ci.org/Shougo/vimproc.vim)
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/nutwxuj2poauar2b/branch/master?svg=true)](https://ci.appveyor.com/project/Shougo/vimproc-vim/branch/master)
+[![GitHub release](https://img.shields.io/github/release/Shougo/vimproc.vim.svg)](https://github.com/Shougo/vimproc.vim/releases)
 
-[![Build Status](https://travis-ci.org/mattn/emmet-vim.svg?branch=master)](https://travis-ci.org/mattn/emmet-vim)
+vimproc is a great asynchronous execution library for Vim.  It is a fork of
+proc.vim by Yukihiro Nakadaira.  I added some features and fixed some bugs and
+I'm maintaining it now.  Instead of an external shell (example: 'shell'),
+vimproc uses an external DLL file.
 
-[emmet-vim](http://mattn.github.com/emmet-vim) is a vim plug-in
-which provides support for expanding abbreviations similar to
-[emmet](http://emmet.io/).
+Supported platforms:
+* Windows 32/64bit (Compiled by MinGW or Visual Studio)
+* macOS (10.5 or later)
+* Linux
+* Cygwin
+* Solaris
+* BSD (but cannot check)
+* Android (experimental)
 
-![screenshot](https://raw.githubusercontent.com/mattn/emmet-vim/master/doc/screenshot.gif)
+Not supported platforms:
+* Other UNIX platforms
 
-## Installation
+## Install
 
-[Download zip file](http://www.vim.org/scripts/script.php?script_id=2981):
+### Manual Install
 
-    cd ~/.vim
-    unzip emmet-vim.zip
+* Clone this repo
+* Build vimproc's native extensions (see Building for details)
+* Copy `autoload/*`, `lib/*` and `plugin/*` files to your 'runtimepath'
+  directory (see `:help runtimepath`).
 
-To install using [pathogen.vim](https://github.com/tpope/vim-pathogen):
+### dein.vim
 
-    git clone https://github.com/mattn/emmet-vim.git ~/.vim/bundle/emmet-vim
-
-To install using [Vundle](https://github.com/gmarik/vundle):
-
-    " add this line to your .vimrc file
-    Plugin 'mattn/emmet-vim'
-
-To install using [Vim-Plug](https://github.com/junegunn/vim-plug):
-
-    " add this line to your .vimrc file
-    Plug 'mattn/emmet-vim'
-
-To checkout the source from repository:
-
-    cd ~/.vim/bundle
-    git clone https://github.com/mattn/emmet-vim.git
-
-or:
-
-    git clone https://github.com/mattn/emmet-vim.git
-    cd emmet-vim
-    cp plugin/emmet.vim ~/.vim/plugin/
-    cp autoload/emmet.vim ~/.vim/autoload/
-    cp -a autoload/emmet ~/.vim/autoload/
-
-
-## Quick Tutorial
-
-Open or create a New File:
-
-    vim index.html
-
-Type ("\_" is the cursor position):
-
-    html:5_
-
-Then type `<c-y>,` (<kbd>Ctrl</kbd><kbd>y</kbd><kbd>,</kbd>), and you should see:
-
-```html
-<!DOCTYPE HTML>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title></title>
-</head>
-<body>
-	_
-</body>
-</html>
-```
-
-[More Tutorials](https://raw.githubusercontent.com/mattn/emmet-vim/master/TUTORIAL)
-
-
-## Enable in different mode
-
-If you don't want to enable emmet in all modes,
-you can use set these options in `vimrc`:
+If you use [dein.vim](http://github.com/Shougo/dein.vim), you can
+update and build vimproc automatically. This is the recommended package manager.
 
 ```vim
-let g:user_emmet_mode='n'    "only enable normal mode functions.
-let g:user_emmet_mode='inv'  "enable all functions, which is equal to
-let g:user_emmet_mode='a'    "enable all function in all mode.
+call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
 ```
 
-## Enable just for html/css
+### Vim-Plug
+
+If you use [vim-plug](https://github.com/junegunn/vim-plug), you can update and build vimproc automatically.
 
 ```vim
-let g:user_emmet_install_global = 0
-autocmd FileType html,css EmmetInstall
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 ```
+### Vundle
 
-## Redefine trigger key
-To remap the default `<C-Y>` leader:
+If you use [Vundle](https://github.com/VundleVim/Vundle.vim), add the following to your `.vimrc`.
 
 ```vim
-let g:user_emmet_leader_key='<C-Z>'
+Plugin 'Shougo/vimproc.vim'
+```
+Then compile the plugin manually where it was installed.
+
+i.e. on Linux & Mac
+```bash
+$ cd ~/.vim/bundle/vimproc.vim && make
 ```
 
-Note that the trailing `,` still needs to be entered, so the new keymap would be `<C-Z>,`.
+See [building](https://github.com/Shougo/vimproc.vim#building)
 
-## Adding custom snippets
-If you have installed the [web-api](https://github.com/mattn/webapi-vim) for **emmet-vim** you can also add your own snippets using a custom **snippets.json** file.
+### NeoBundle
 
-Once you have installed the [web-api](https://github.com/mattn/webapi-vim) add this line to your **.vimrc**:
+If you use [neobundle.vim](http://github.com/Shougo/neobundle.vim), you can
+update and build vimproc automatically.
+
+```vim
+NeoBundle 'Shougo/vimproc.vim', {
+\ 'build' : {
+\     'windows' : 'tools\\update-dll-mingw',
+\     'cygwin' : 'make -f make_cygwin.mak',
+\     'mac' : 'make',
+\     'linux' : 'make',
+\     'unix' : 'gmake',
+\    },
+\ }
 ```
-let g:user_emmet_settings = webapi#json#decode(join(readfile(expand('~/.snippets_custom.json')), "\n"))
+
+### Pathogen
+
+vimproc uses a pathogen compatible structure, so it can be managed with
+[pathogen](https://github.com/tpope/vim-pathogen), however you must remember to
+compile after cloning the repo.
+
+```sh
+git clone https://github.com/Shougo/vimproc.vim.git ~/.vim/bundle/vimproc.vim
+cd ~/.vim/bundle/vimproc.vim
+make
 ```
-You can change the **path** to your **snippets_custom.json** according to your preferences.
 
-[Here](http://docs.emmet.io/customization/snippets/) you can find instructions about creating your customized **snippets.json** file.
+## Building
 
-## Project Authors
+Note: You must use GNU make to build vimproc.
 
-[Yasuhiro Matsumoto](http://mattn.kaoriya.net/)
+You can install the dll using |VimProcInstall|. If you are having any trouble
+or want to build manually then read on.
 
-## Links
+### Linux
 
-### Emmet official site:
+    $ make
 
-* <http://emmet.io/>
+### macOS
 
-### zen-coding official site:
+Note: Users of macOS 10.15 (Catalina) cannot directly use this library with the system-provided vi. (SIP prevents binaries in the write-only `/usr/bin` directory from calling `dlopen` on unsigned libraries like `vimproc_mac.so`.) The simplest solution is to build or install another version of vi in a non-SIP protected location. For example, using homebrew, `brew install vim` (or `nvim`) will install an unrestricted executable in `/usr/local/bin`. (Don't forget to set up aliases or `$PATH` so that you don't accidentally invoke the system `vi`.)
 
-* <http://code.google.com/p/zen-coding/>
+    $ make
 
-### emmet.vim:
+Note: If you want to build for multiple architectures, you can use `ARCHS` and `CC` variables.
 
-* <http://mattn.github.com/emmet-vim>
+Build for i386 and x86-64:
 
-### development repository:
+    $ make ARCHS='i386 x86_64'
 
-* <https://github.com/mattn/emmet-vim>
+### FreeBSD
 
-### my blog posts about zencoding-vim:
+    $ gmake
 
-* <http://mattn.kaoriya.net/software/vim/20100222103327.htm>
+If you want to use BSD make, use the platform specific makefile:
 
-* <http://mattn.kaoriya.net/software/vim/20100306021632.htm>
+    $ make -f make_bsd.mak
 
-### Japanese blog posts about zencoding-vim:
+### Solaris
 
-* <http://d.hatena.ne.jp/idesaku/20100424/1272092255>
+    $ gmake
 
-* <http://d.hatena.ne.jp/griefworker/20110118/vim_zen_coding>
+Note: If you want to use Sun Compiler, you can use `SUNCC` variable.
 
-* <http://d.hatena.ne.jp/sakurako_s/20110126/1295988873>
+    $ gmake SUNCC=cc
 
-* <http://looxu.blogspot.jp/2010/02/zencodingvimhtml.html>
+### Windows
 
-### A Chinese translation of the tutorial:
+Note: In Windows, using MinGW is recommended.
+Note: If you have not "gcc" binary, you must change $CC value.
 
-* <http://www.zfanw.com/blog/zencoding-vim-tutorial-chinese.html>
+Windows using MinGW (32bit Vim):
 
+    $ mingw32-make -f make_mingw32.mak
+
+Windows using MinGW (If you want to use MinGW compiler in Cygwin):
+
+    $ mingw32-make -f make_mingw32.mak CC=mingw32-gcc
+
+Windows using MinGW (64bit Vim):
+
+    $ mingw32-make -f make_mingw64.mak
+
+Windows using Visual Studio (32bit/64bit Vim):
+
+    $ nmake -f make_msvc.mak nodebug=1
+
+Note: To build with Visual Studio, you must install Windows SDK and run from
+VS command prompt.
+https://github.com/Shougo/vimproc.vim/issues/58
+
+If you use MSVC 11 or later, you need to specify where the Win32.mak file is,
+e.g.:
+
+    $ nmake -f make_msvc.mak nodebug=1 "SDK_INCLUDE_DIR=C:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\Include"
+
+The architecture will be automatically detected, but you can also specify the
+architecture explicitly. E.g.:
+
+    32bit: nmake -f make_msvc.mak nodebug=1 CPU=i386
+    64bit: nmake -f make_msvc.mak nodebug=1 CPU=AMD64
+
+Cygwin:
+
+    $ make
+
+Note: The `vimproc_cygwin.dll` compiled in Cygwin won't work with Windows Vim.
+
+### Windows Binaries
+
+* [Kaoriya Vim](http://www.kaoriya.net/software/vim/) comes bundled with a precompiled version
+for vimproc in Windows environment
+* https://github.com/Shougo/vimproc.vim/releases

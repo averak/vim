@@ -1,16 +1,15 @@
-### Description of Changes
-Closes #  <!-- Issue number this PR addresses. If none, remove this line. -->
+#### Requirements (please check off with 'x')
 
+- [ ] I have read the [Contributing Guidelines](https://github.com/ryanoasis/vim-devicons/blob/master/contributing.md)
+- [ ] I have read or at least glanced at the [FAQ](https://github.com/ryanoasis/vim-devicons#faq--troubleshooting)
+- [ ] I have read or at least glanced at the [Wiki](https://github.com/ryanoasis/vim-devicons/wiki)
 
----
-### New Version Info
+#### What does this Pull Request (PR) do?
 
-#### Author's Instructions
-- [ ] Derive a new `MAJOR.MINOR.PATCH` version number. Increment the:
-    - `MAJOR` version when you make incompatible API changes
-    - `MINOR` version when you add functionality in a backwards-compatible manner
-    - `PATCH` version when you make backwards-compatible bug fixes
-- [ ] Update [CHANGELOG.md](https://github.com/scrooloose/nerdtree/blob/master/CHANGELOG.md), following the established pattern.
-#### Collaborator's Instructions
-- [ ] Review [CHANGELOG.md](https://github.com/scrooloose/nerdtree/blob/master/CHANGELOG.md), suggesting a different version number if necessary.
-- [ ] After merge, tag the merge commit, e.g. `git tag -a 3.1.4 -m "v3.1.4" && git push origin --tags`
+#### How should this be manually tested?
+
+#### Any background context you can provide?
+
+#### What are the relevant tickets (if any)?
+
+#### Screenshots (if appropriate or helpful)

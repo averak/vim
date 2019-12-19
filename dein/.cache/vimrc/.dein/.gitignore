@@ -1,2 +1,4 @@
+*.swp
+*.vmb
 doc/tags
-__pycache__/
+/README.html

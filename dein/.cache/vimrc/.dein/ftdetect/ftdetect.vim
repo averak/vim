@@ -1,5 +1,6 @@
-" Detect syntax file.
-autocmd BufNewFile,BufRead *.snip,*.snippets set filetype=neosnippet
+autocmd BufNewFile,BufRead *.haml,*.hamlbars,*.hamlc setf haml
+autocmd BufNewFile,BufRead *.sass setf sass
+autocmd BufNewFile,BufRead *.scss setf scss
 " the Requirements File Format syntax support for Vim
 " Version: 1.5.1
 " Author:  raimon <raimon49@hotmail.com>
@@ -60,9 +61,8 @@ au BufNewFile,BufRead *.{txt,in} if s:isRequirementsFile() | set ft=requirements
 au BufNewFile,BufRead *.pip set ft=requirements
 
 " vim: et sw=4 ts=4 sts=4:
-autocmd BufNewFile,BufRead *.haml,*.hamlbars,*.hamlc setf haml
-autocmd BufNewFile,BufRead *.sass setf sass
-autocmd BufNewFile,BufRead *.scss setf scss
+" Detect syntax file.
+autocmd BufNewFile,BufRead *.snip,*.snippets set filetype=neosnippet
 if !exists('g:markdown_enable_spell_checking')
   let g:markdown_enable_spell_checking = 0
 end

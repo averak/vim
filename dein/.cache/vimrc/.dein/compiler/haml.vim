@@ -1,7 +1,9 @@
+if !exists('g:polyglot_disabled') || index(g:polyglot_disabled, 'haml') == -1
+
 " Vim compiler file
 " Compiler:	Haml
 " Maintainer:	Tim Pope <vimNOSPAM@tpope.org>
-" Last Change:	2016 Aug 29
+" Last Change:	2013 May 30
 
 if exists("current_compiler")
   finish
@@ -26,3 +28,5 @@ let &cpo = s:cpo_save
 unlet s:cpo_save
 
 " vim:set sw=2 sts=2:
+
+endif
