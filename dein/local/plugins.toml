@@ -75,6 +75,10 @@ let g:syntastic_auto_loc_list=1
 let g:syntastic_aggregate_errors = 1
 '''
 
+# spell check
+[[plugins]]
+repo = 'kamykn/spelunker.vim'
+
 # Twitter
 [[plugins]]
 repo = 'twitvim/twitvim'
