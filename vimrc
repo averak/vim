@@ -130,13 +130,13 @@ set laststatus=2
 set modeline
 set modelines=10
 set wildmenu
+set clipboard=unnamed,autoselect
 set title
 set titleold="Terminal"
 set titlestring=%F
 set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
 set autoread
 set noerrorbells visualbell t_vb=
-set clipboard+=unnamed,autoselect
 set mouse=a
 "set whichwrap=b,s,<,>,[,]
 set whichwrap=h,l
