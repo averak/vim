@@ -23,13 +23,14 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 '''
 
-# Dark Theme
+# Color scheme
 [[plugins]]
-repo = 'kamykn/dark-theme.vim'
+repo = 'whatyouhide/vim-gotham'
 hook_add = '''
 syntax enable
-colorscheme darktheme
+colorscheme gotham256
 '''
+
 
 # 閉じ括弧保管
 [[plugins]]
