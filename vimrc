@@ -154,7 +154,7 @@ if &compatible
 endif
 
 " プラグインが実際にインストールされるディレクトリ
-let s:dein_dir = expand('~/.config/nvim/dein')
+let s:dein_dir = expand('~/.vim/dein')
 " dein.vim 本体
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 " dein.vim がなければ github から落としてくる
@@ -171,7 +171,7 @@ if dein#load_state(s:dein_dir)
 
   " プラグインリストを収めた TOML ファイル
   " 予め TOML ファイル（後述）を用意しておく
-  let g:rc_dir    = expand('~/.config/nvim/dein/local')
+  let g:rc_dir    = expand('~/.vim/dein/local')
   let s:toml      = g:rc_dir . '/plugins.toml'
   let s:lazy_toml = g:rc_dir . '/plugins_lazy.toml'
 
@@ -183,7 +183,7 @@ if dein#load_state(s:dein_dir)
   call dein#save_state()
 endif
 
-" もし、未インストールものものがあったらインストール
+" 未インストールのプラグインをインストール
 if dein#check_install()
   call dein#install()
 endif
