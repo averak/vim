@@ -75,11 +75,11 @@ repo = 'twitvim/twitvim'
 ## fzf
 [[plugins]]
 repo = 'junegunn/fzf'
-build = './install'
 hook_add = '''
 "スペースffでFZF
 nmap <silent> <space>ff :<C-u>FZF<cr>
 '''
+
 ## -----*----- NERDTree -----*----- ##
 [[plugins]]
 repo = 'scrooloose/nerdtree'
