@@ -39,7 +39,7 @@ repo = 'cohama/lexima.vim'
 
 # Markdown
 [[plugins]]
-repo = 'kannokanno/previm'
+repo = 'previm/previm'
 hook_add = '''
 nnoremap <silent> <C-p> :PrevimOpen<CR>
 let g:vim_markdown_folding_disabled = 1
