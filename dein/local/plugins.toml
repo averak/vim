@@ -75,6 +75,7 @@ repo = 'twitvim/twitvim'
 ## fzf
 [[plugins]]
 repo = 'junegunn/fzf'
+build = './install'
 hook_add = '''
 "スペースffでFZF
 nmap <silent> <space>ff :<C-u>FZF<cr>
@@ -159,8 +160,8 @@ highlight CocWarningSign ctermfg=0 ctermbg=172
 "ノーマルモードで
 "スペース2回でCocList
 nmap <silent> <space><space> :<C-u>CocList<cr>
-"HでHover
-nmap <silent> H :<C-u>call CocAction('doHover')<cr>
+"KでHover
+nmap <silent> K :<C-u>call CocAction('doHover')<cr>
 "TでDefinition
 nmap <silent> T <Plug>(coc-definition)
 "スペースrfでReferences
