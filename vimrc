@@ -63,7 +63,7 @@ noremap <Right> :bn<CR>
 noremap ah <C-w>h
 noremap an <C-w>l
 noremap ak <C-w>k
-noremap aj <C-w>j
+noremap at <C-w>j
 
 "" scroll
 nmap <C-k> <C-y>
