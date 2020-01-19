@@ -65,6 +65,12 @@ noremap an <C-w>l
 noremap ak <C-w>k
 noremap aj <C-w>j
 
+"" scroll
+nmap <C-k> <C-y>
+nmap <C-t> <C-e>
+nmap ok <C-u>
+nmap ot <C-d>
+
 "" save
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>qq :q!<CR>
