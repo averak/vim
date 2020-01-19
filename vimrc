@@ -54,10 +54,16 @@ vnoremap n l
 :command Ds FixWhitespace
 
 "" 矢印キー
-"noremap <Up> :NERDTree<CR>
-"noremap <Down> :FriendsTwitter<CR>
-"noremap <Left> :Gina diff<CR>
-"noremap <Right> : Gina status<CR>
+noremap <Up> :Gina diff<CR>
+noremap <Down> :Gina status<CR>
+noremap <Left> :bp<CR>
+noremap <Right> :bn<CR>
+
+" ウィンドウ移動
+noremap ah <C-w>h
+noremap an <C-w>l
+noremap ak <C-w>k
+noremap aj <C-w>j
 
 "" save
 nnoremap <Leader>w :w<CR>
