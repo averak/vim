@@ -71,6 +71,8 @@ nnoremap <Leader>qq :q!<CR>
 nnoremap <Leader>eee :e<CR>
 nnoremap <Leader>wq :wq<CR>
 nnoremap <Leader>nn :noh<CR>
+nnoremap <Leader>y :%y<CR>
+nnoremap <Leader>dd :%d<CR>
 
 "" split
 nnoremap <Leader>s :<C-u>split<CR>
