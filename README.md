@@ -31,14 +31,17 @@ G             | 一番下に移動
 ok            | 上に画面半分スクロール
 ot            | 下に画面半分スクロール
 
-### 矢印キー
+### バッファ移動
 Keybind       | Description
 --------------|-----------------------------
-ah            | バッファ移（左）
-an            | バッファ移（右）
 ak            | :Gina diff
 at            | :Gina status
-### ウィンドウ操作
+
+### Gina
+Keybind       | Description
+--------------|-----------------------------
+ak            | :Gina diff
+at            | :Gina status
 
 ### 数値操作
 Keybind       | Description
