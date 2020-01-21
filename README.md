@@ -7,7 +7,7 @@ Keybind       | Description
 --------------|-----------------------------
 space + s     | 下にウィンドウを追加
 space + v     | 右にウィンドウを追加
-a[htkn]       | ウィンドウ移動
+[←→↑↓]       | ウィンドウ移動
 space + ter   | ターミナルを起動
 
 ### タブ操作
@@ -34,10 +34,11 @@ ot            | 下に画面半分スクロール
 ### 矢印キー
 Keybind       | Description
 --------------|-----------------------------
-←             | バッファ移（左）
-→             | バッファ移（右）
-↑             | :Gina diff
-↓             | :Gina stash
+ah            | バッファ移（左）
+an            | バッファ移（右）
+ak            | :Gina diff
+at            | :Gina status
+### ウィンドウ操作
 
 ### 数値操作
 Keybind       | Description

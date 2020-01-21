@@ -42,16 +42,18 @@ vnoremap h h
 vnoremap n l
 
 "" 矢印キー
-noremap <Up> :Gina diff<CR>
-noremap <Down> :Gina status<CR>
-noremap <Left> :bp<CR>
-noremap <Right> :bn<CR>
+noremap <UP> <C-w>k
+noremap <Down> <C-w>j
+noremap <Left> <C-w>h
+noremap <Right> <C-w>l
 
-" ウィンドウ移動
-noremap ah <C-w>h
-noremap an <C-w>l
-noremap ak <C-w>k
-noremap at <C-w>j
+" バッファ移動
+noremap ah :bp<CR>
+noremap an :bn<CR>
+
+" Gina
+noremap ak :Gina diff<CR>
+noremap at :Gina status<CR>
 
 "" scroll
 nmap <C-k> <C-y>
