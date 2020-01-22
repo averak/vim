@@ -11,6 +11,16 @@ repo = 'haya14busa/dein-command.vim'
 [[plugins]]
 repo = 'Shougo/vimproc.vim'
 
+# Color scheme
+[[plugins]]
+repo='morhetz/gruvbox'
+[[plugins]]
+repo = 'whatyouhide/vim-gotham'
+hook_add = '''
+syntax enable
+colorscheme gotham256
+'''
+
 # space + go -> exec
 [[plugins]]
 repo = 'thinca/vim-quickrun'
@@ -25,16 +35,6 @@ repo = 'junegunn/vim-easy-align'
 hook_add = '''
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
-'''
-
-# Color scheme
-[[plugins]]
-repo='morhetz/gruvbox'
-[[plugins]]
-repo = 'whatyouhide/vim-gotham'
-hook_add = '''
-syntax enable
-colorscheme gotham256
 '''
 
 # 閉じ括弧保管

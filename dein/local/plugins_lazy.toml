@@ -1,11 +1,62 @@
 [[plugins]]
-repo = 'Shougo/unite.vim'
+repo = 'Shougo/deoplete.nvim'
+on_i = 1
+on_event = "InsertCharPre"
+hook_source = '''
+  let g:deoplete#enable_at_startup = 1
+  let g:deoplete#enable_smart_case = 1
+  let g:deoplete#file#enable_buffer_path = 1
+  let g:deoplete#auto_complete_delay = 0
+'''
 
 [[plugins]]
-repo      = 'Shougo/neomru.vim'
-on_source = ['unite.vim']
+repo = 'tbodt/deoplete-tabnine'
+build = './install.sh'
+on_source = ['deoplete.nvim']
+hook_source = '''
+  call deoplete#custom#var('tabnine', {
+    \ 'line_limit': 30,
+    \ 'max_num_results': 3,
+  \ })
+'''
 
 [[plugins]]
-repo  = 'raimon49/requirements.txt.vim'
-on_ft = ['python']
+repo = 'Shougo/neco-syntax'
+on_source = ['deoplete.nvim']
 
+[[plugins]]
+repo = 'Shougo/deoplete-clangx'
+on_event = 'InsertEnter'
+on_source = ['deoplete.nvim']
+
+[[plugins]]
+repo = 'Shougo/neoinclude.vim'
+on_event = 'InsertEnter'
+hook_source = '''
+  if has('mac')
+    augroup fileType
+      autocmd FileType cpp let g:neoinclude#paths = {
+      \ 'cpp': '/Library/Developer/CommandLineTools/usr/include/c++/v1'}
+      autocmd FileType c let g:neoinclude#paths = {
+      \ 'c': '/Library/Developer/CommandLineTools/usr/include/c++/v1'}
+    augroup END
+  endif
+'''
+
+[[plugins]]
+repo = 'Shougo/neco-vim'
+on_source = ['deoplete.nvim']
+
+[[plugins]]
+repo = 'tpope/vim-endwise'
+on_ft = 'ruby'
+on_event = 'InsertEnter'
+
+[[plugins]]
+repo = 'lighttiger2505/deoplete-vim-lsp'
+depends = 'deoplete.nvim'
+
+[[plugins]]
+repo = 'deoplete-plugins/deoplete-jedi'
+on_ft = 'python'
+on_source = ['deoplete.nvim']
