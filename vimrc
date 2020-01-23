@@ -8,14 +8,56 @@
 "---------------------------------------------------------------------------
 "---------------------------------------------------------------------------
 
-let mapleader="\<Space>"
+"" -----*----- Base Settings -----*----- ""
+set encoding=utf-8
+scriptencoding utf-8
+set fileencodings=utf-8,sjis,cp932,euc-jp
+set fileformats=unix,dos,mac
+set bomb
+set binary
+set ttyfast
+set backspace=indent,eol,start
+set tabstop=4
+set softtabstop=0
+set shiftwidth=4
+set expandtab
+set splitright
+set splitbelow
+set hidden
+set virtualedit=onemore
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+set nobackup
+set noswapfile
+set helplang=ja,en
+set ruler
+set number
+set ttimeoutlen=10
+set gcr=a:blinkon0
+set scrolloff=3
+set laststatus=2
+set modeline
+set modelines=10
+set wildmenu
+set clipboard=unnamed
+set title
+set titleold="Terminal"
+set titlestring=%F
+set cursorline
+set autoread
+set noerrorbells visualbell t_vb=
+set mouse=a
+set whichwrap=h,l
+syntax on
+highlight Pmenu ctermbg=233 ctermfg=241
+highlight PmenuSel ctermbg=233 ctermfg=166
+highlight Search ctermbg=166 ctermfg=233
+highlight Visual ctermbg=166 ctermfg=233
 
-"" vimshell
-nnoremap <Leader>ter :vertical terminal<CR>
-let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
-let g:vimshell_prompt =  '$ '
 
-"言語別にインデントを分ける"
+"" -----*----- Indent Settings -----*----- ""
 augroup fileTypeIndent
   autocmd!
   autocmd FileType py setlocal tabstop=4 softtabstop=4 shiftwidth=4
@@ -30,6 +72,8 @@ augroup END
 
 
 "" -----*----- Shortcuts -----*----- ""
+let mapleader="\<Space>"
+
 ""htkn to  arrow
 nnoremap k k
 nnoremap t j
@@ -79,6 +123,11 @@ nnoremap <Tab> gt
 nnoremap <S-Tab> gT
 nnoremap <Leader>t :tabnew<CR>
 
+"" terminal
+nnoremap <Leader>ter :vertical terminal<CR>
+let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
+let g:vimshell_prompt =  '$ '
+
 "" +(on \d) => increment
 nnoremap + <C-a>
 
@@ -92,54 +141,6 @@ vmap <C-c> :w !pbcopy<CR><CR>
 " move line/word
 nmap N $
 nmap H 0
-
-"" -----*----- Base Settings -----*----- ""
-set encoding=utf-8
-set fileencoding=utf-8
-set fileencodings=utf-8
-set bomb
-set binary
-set ttyfast
-set backspace=indent,eol,start
-set tabstop=4
-set softtabstop=0
-set shiftwidth=4
-set expandtab
-set splitright
-set splitbelow
-set hidden
-set hlsearch
-set incsearch
-set ignorecase
-set smartcase
-set nobackup
-set noswapfile
-set fileformats=unix,dos,mac
-syntax on
-set ruler
-set number
-set ttimeoutlen=10
-set gcr=a:blinkon0
-set scrolloff=3
-set laststatus=2
-set modeline
-set modelines=10
-set wildmenu
-set clipboard=unnamed,autoselect
-set title
-set titleold="Terminal"
-set titlestring=%F
-set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
-set cursorline
-set autoread
-set noerrorbells visualbell t_vb=
-set mouse=a
-"set whichwrap=b,s,<,>,[,]
-set whichwrap=h,l
-highlight Pmenu ctermbg=233 ctermfg=241
-highlight PmenuSel ctermbg=233 ctermfg=166
-highlight Search ctermbg=166 ctermfg=233
-highlight Visual ctermbg=166 ctermfg=233
 
 
 "========================================="
