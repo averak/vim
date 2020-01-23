@@ -5,13 +5,7 @@ hook_add = '''
 :command PlugInstall call dein#install()
 '''
 
-[[plugins]]
-repo = 'haya14busa/dein-command.vim'
-
-[[plugins]]
-repo = 'Shougo/vimproc.vim'
-
-# Color scheme
+## -----*----- Color Scheme -----*----- ##
 [[plugins]]
 repo='morhetz/gruvbox'
 [[plugins]]
@@ -19,75 +13,6 @@ repo = 'whatyouhide/vim-gotham'
 hook_add = '''
 syntax enable
 colorscheme gotham256
-'''
-
-# space + go -> exec
-[[plugins]]
-repo = 'thinca/vim-quickrun'
-hook_add = '''
-map <Leader>go :QuickRun<CR>
-let g:quickrun_config={'*': {'split': ''}}
-'''
-
-# ga -> align
-[[plugins]]
-repo = 'junegunn/vim-easy-align'
-hook_add = '''
-xmap ga <Plug>(EasyAlign)
-nmap ga <Plug>(EasyAlign)
-'''
-
-# 閉じ括弧保管
-[[plugins]]
-repo = 'cohama/lexima.vim'
-
-# Markdown
-[[plugins]]
-repo = 'previm/previm'
-hook_add = '''
-nnoremap <silent> <C-p> :PrevimOpen<CR>
-let g:vim_markdown_folding_disabled = 1
-let g:previm_enable_realtime = 1
-'''
-[[plugins]]
-repo = 'tyru/open-browser.vim'
-
-
-[[plugins]]
-repo = 'dense-analysis/ale'
-hook_add = '''
-" 保存時のみ実行する
-let g:ale_lint_on_text_changed = 0
-" 表示に関する設定
-let g:ale_sign_error = ''
-let g:ale_sign_warning = ''
-let g:airline#extensions#ale#open_lnum_symbol = '('
-let g:airline#extensions#ale#close_lnum_symbol = ')'
-let g:ale_echo_msg_format = '[%linter%]%code: %%s'
-highlight link ALEErrorSign Tag
-highlight link ALEWarningSign StorageClass
-'''
-
-# spell check
-[[plugins]]
-repo = 'kamykn/spelunker.vim'
-
-# Twitter
-[[plugins]]
-repo = 'twitvim/twitvim'
-hook_add = '''
-:command Tpost PosttoTwitter
-:command Tread FriendsTwitter
-:command Tswitch SwitchLoginTwitter
-'''
-
-## fzf
-[[plugins]]
-repo = 'junegunn/fzf'
-build = './install'
-hook_add = '''
-"スペースffでFZF
-nmap <silent> <space>ff :<C-u>FZF<cr>
 '''
 
 ## -----*----- NERDTree -----*----- ##
@@ -113,7 +38,7 @@ repo = 'jistr/vim-nerdtree-tabs'
 [[plugins]]
 repo = 'ryanoasis/vim-devicons'
 
-## -----*----- option bar -----*----- ##
+## -----*----- ariline -----*----- ##
 [[plugins]]
 repo = 'vim-airline/vim-airline'
 hook_add = '''
@@ -181,7 +106,21 @@ nmap <silent> <space>rn <Plug>(coc-rename)
 nmap <silent> <space>fmt <Plug>(coc-format)
 '''
 
-## -----*----- Git関連 -----*----- ##
+[[plugins]]
+repo = 'dense-analysis/ale'
+hook_add = '''
+" 保存時のみ実行する
+let g:ale_lint_on_text_changed = 0
+" 表示に関する設定
+let g:ale_sign_error = ''
+let g:ale_sign_warning = ''
+let g:airline#extensions#ale#open_lnum_symbol = '('
+let g:airline#extensions#ale#close_lnum_symbol = ')'
+let g:ale_echo_msg_format = '[%linter%]%code: %%s'
+highlight link ALEErrorSign Tag
+highlight link ALEWarningSign StorageClass
+'''
+
 [[plugins]]
 repo ='lambdalisue/gina.vim'
 hook_add = '''
@@ -189,23 +128,63 @@ call gina#custom#command#option('status', '--opener', 'vsplit')
 call gina#custom#command#option('diff', '--opener', 'vsplit')
 '''
 
-## -----*----- HTML -----*----- ##
-[[plugins]]
-repo = 'alvan/vim-closetag'
-[[plugins]]
-repo = 'hail2u/vim-css3-syntax'
-[[plugins]]
-repo = 'gorodinskiy/vim-coloresque'
-[[plugins]]
-repo = 'tpope/vim-haml'
 [[plugins]]
 repo = 'mattn/emmet-vim'
+hook_add = '''
+let g:user_emmet_settings = {
+            \    'variables': {
+            \      'lang': "ja"
+            \    },
+            \   'indentation': '  '
+            \ }
+'''
 
 [[plugins]]
-repo = 'mattn/webapi-vim'
+repo = 'junegunn/fzf'
+build = './install'
+hook_add = '''
+" space + ff
+nmap <silent> <space>ff :<C-u>FZF<cr>
+'''
+
+[[plugins]]
+repo = 'thinca/vim-quickrun'
+hook_add = '''
+" space + go -> exec
+map <Leader>go :QuickRun<CR>
+let g:quickrun_config={'*': {'split': ''}}
+'''
+
+[[plugins]]
+repo = 'junegunn/vim-easy-align'
+hook_add = '''
+" ga -> align
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+'''
+
+[[plugins]]
+repo = 'twitvim/twitvim'
+hook_add = '''
+:command Tpost PosttoTwitter
+:command Tread FriendsTwitter
+:command Tswitch SwitchLoginTwitter
+'''
+
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+
+[[plugins]]
+repo = 'kamykn/spelunker.vim'
+
+[[plugins]]
+repo = 'tpope/vim-markdown'
 
 [[plugins]]
 repo = 'cohama/lexima.vim'
+
+[[plugins]]
+repo = 'kazukazuinaina/commentout.vim'
 
 [[plugins]]
 repo = 'vim-jp/autofmt'
