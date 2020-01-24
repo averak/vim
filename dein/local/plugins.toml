@@ -127,6 +127,8 @@ autocmd FileType denite call s:denite_my_settings()
       nnoremap <silent> * :<C-u>DeniteCursorWord -buffer-name=search
       \ -auto-highlight -mode=normal line<CR>
 	endfunction
+nnoremap <Leader>dg :Denite grep<CR>
+nnoremap <Leader>db :Denite buffer<CR>
 '''
 
 [[plugins]]
