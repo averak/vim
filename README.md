@@ -1,6 +1,8 @@
 my vim config
 ==============
 
+[![Build Status](https://api.travis-ci.org/AjxLab/vim.svg?branch=master)](https://travis-ci.org/AjxLab/vim)
+
 ## Usage
 ### ウィンドウ操作
 Keybind       | Description
