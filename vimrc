@@ -146,10 +146,6 @@ nmap H 0
 "========================================="
 " plugin Manager: dein.vim setting
 "========================================="
-if &compatible
-  set nocompatible
-endif
-
 " プラグインが実際にインストールされるディレクトリ
 let s:dein_dir = expand('~/.vim/dein')
 " dein.vim 本体
