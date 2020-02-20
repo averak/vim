@@ -222,3 +222,6 @@ repo = 'itchyny/calendar.vim'
 
 [[plugins]]
 repo = 'andymass/vim-matchup'
+
+[[plugins]]
+repo = 'Yggdroot/indentLine'
