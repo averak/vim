@@ -7,5 +7,5 @@
         }
     },
     "suggest.enablePreselect": true,
-    "solargraph.commandPath": "/Users/abetatsuya/.rbenv/shims/solargraph"
+    "solargraph.commandPath": "/Users/abelab/.rbenv/shims/solargraph"
 }
