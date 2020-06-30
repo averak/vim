@@ -139,9 +139,14 @@ nnoremap - <C-x>
 vmap <C-x> :!pbcopy<CR>
 vmap <C-c> :w !pbcopy<CR><CR>
 
-" move line/word
+"" move line/word
 nmap N $
 nmap H 0
+
+"" code format
+vmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+command! -nargs=0 Format :call CocAction('format')
 
 
 "========================================="

@@ -1,11 +1,17 @@
 {
-    "languageserver": {
-        "clangd": {
-            "command": "clangd",
-            "rootPatterns": ["compile_flags.txt", "compile_commands.json", ".vim/", ".git/", ".hg/"],
-            "filetypes": ["c", "cpp", "objc", "objcpp"]
-        }
-    },
-    "suggest.enablePreselect": true,
-    "solargraph.commandPath": "/Users/abelab/.rbenv/shims/solargraph"
+  "languageserver": {
+    "clangd": {
+      "command": "clangd",
+      "rootPatterns": [
+        "compile_flags.txt",
+        "compile_commands.json",
+        ".vim/",
+        ".git/",
+        ".hg/"
+      ],
+      "filetypes": ["c", "cpp", "objc", "objcpp"]
+    }
+  },
+  "suggest.enablePreselect": true,
+  "solargraph.commandPath": "/Users/abelab/.rbenv/shims/solargraph"
 }
