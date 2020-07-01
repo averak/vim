@@ -183,7 +183,12 @@ repo = 'thinca/vim-quickrun'
 hook_add = '''
 " space + go -> exec
 map <Leader>go :QuickRun<CR>
-let g:quickrun_config={'*': {'split': ''}}
+let g:quickrun_config={
+\ '*': {
+\   'split': '',
+\   'hook/cd/directory': '%S:p:h'
+\  }
+\}
 '''
 
 [[plugins]]

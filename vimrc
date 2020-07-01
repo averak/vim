@@ -18,7 +18,7 @@ set binary
 set ttyfast
 set backspace=indent,eol,start
 set tabstop=4
-set softtabstop=0
+set softtabstop=4
 set shiftwidth=4
 set expandtab
 set splitright
