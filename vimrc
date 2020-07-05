@@ -50,6 +50,7 @@ set autoread
 set noerrorbells visualbell t_vb=
 set mouse=a
 set whichwrap=h,l
+filetype on
 syntax on
 highlight Pmenu ctermbg=233 ctermfg=241
 highlight PmenuSel ctermbg=233 ctermfg=166
@@ -60,14 +61,14 @@ highlight Visual ctermbg=166 ctermfg=233
 "" -----*----- Indent Settings -----*----- ""
 augroup fileTypeIndent
   autocmd!
-  autocmd FileType py setlocal tabstop=4 softtabstop=4 shiftwidth=4
-  autocmd FileType rb setlocal tabstop=2 softtabstop=2 shiftwidth=2
+  autocmd FileType python setlocal tabstop=4 softtabstop=4 shiftwidth=4
+  autocmd FileType ruby setlocal tabstop=2 softtabstop=2 shiftwidth=2
   autocmd FileType html setlocal tabstop=2 softtabstop=2 shiftwidth=2
   autocmd FileType eruby setlocal tabstop=2 softtabstop=2 shiftwidth=2
+  autocmd FileType javascript setlocal tabstop=2 softtabstop=2 shiftwidth=2
+  autocmd FileType typescript setlocal tabstop=2 softtabstop=2 shiftwidth=2
   autocmd FileType vim setlocal tabstop=2 softtabstop=2 shiftwidth=2
   autocmd FileType sh setlocal tabstop=2 softtabstop=2 shiftwidth=2
-  autocmd FileType go :highlight goErr cterm=bold ctermfg=214
-  autocmd FileType go :match goErr /\<err\>/
   autocmd FileType markdown setlocal wrap
 augroup END
 
