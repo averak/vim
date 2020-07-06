@@ -110,6 +110,21 @@ nmap <silent> <space>rf <Plug>(coc-references)
 nmap <silent> <space>rn <Plug>(coc-rename)
 "スペースfmtでFormat
 nmap <silent> <space>fmt <Plug>(coc-format)
+
+let g:coc_global_extensions = [
+      \  'coc-lists'
+      \, 'coc-json'
+      \, 'coc-marketplace'
+      \, 'coc-java'
+      \, 'coc-html'
+      \, 'coc-css'
+      \, 'coc-tsserver'
+      \, 'coc-solargraph'
+      \, 'coc-python'
+      \, 'coc-solargraph'
+      \, 'coc-snippets'
+      \, 'coc-vetur'
+      \ ]
 '''
 
 [[plugins]]
