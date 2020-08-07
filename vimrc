@@ -63,8 +63,9 @@ augroup fileTypeIndent
   autocmd!
   autocmd FileType python setlocal tabstop=4 softtabstop=4 shiftwidth=4
   autocmd FileType ruby setlocal tabstop=2 softtabstop=2 shiftwidth=2
-  autocmd FileType html setlocal tabstop=2 softtabstop=2 shiftwidth=2
   autocmd FileType eruby setlocal tabstop=2 softtabstop=2 shiftwidth=2
+  autocmd FileType html setlocal tabstop=2 softtabstop=2 shiftwidth=2
+  autocmd FileType json setlocal tabstop=2 softtabstop=2 shiftwidth=2
   autocmd FileType javascript setlocal tabstop=2 softtabstop=2 shiftwidth=2
   autocmd FileType typescript setlocal tabstop=2 softtabstop=2 shiftwidth=2
   autocmd FileType javascriptreact setlocal tabstop=2 softtabstop=2 shiftwidth=2
