@@ -253,10 +253,4 @@ repo = 'kazukazuinaina/commentout.vim'
 repo = 'vim-jp/autofmt'
 
 [[plugins]]
-repo = 'kazukazuinaina/Weather.vim'
-
-[[plugins]]
-repo = 'itchyny/calendar.vim'
-
-[[plugins]]
 repo = 'andymass/vim-matchup'
