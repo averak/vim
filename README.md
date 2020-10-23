@@ -36,8 +36,8 @@ ot            | 下に画面半分スクロール
 ### バッファ移動
 Keybind       | Description
 --------------|-----------------------------
-ak            | :Gina diff
-at            | :Gina status
+ah            | 左へ移動
+an            | 右へ移動
 
 ### Gina
 Keybind       | Description
