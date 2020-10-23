@@ -128,8 +128,6 @@ nnoremap <Leader>t :tabnew<CR>
 
 "" terminal
 nnoremap <Leader>ter :vertical terminal<CR>
-let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
-let g:vimshell_prompt =  '$ '
 
 "" +(on \d) => increment
 nnoremap + <C-a>
