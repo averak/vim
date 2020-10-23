@@ -105,10 +105,8 @@ noremap ak :Gina diff<CR>
 noremap at :Gina status<CR>
 
 "" scroll
-nmap <C-k> <C-y>
-nmap <C-t> <C-e>
-nmap ok <C-u>
-nmap ot <C-d>
+nnoremap ok <C-u>
+nnoremap ot <C-d>
 
 "" save
 nnoremap <Leader>w :w<CR>
@@ -139,17 +137,15 @@ nnoremap + <C-a>
 "" -(on \d) => decrement
 nnoremap - <C-x>
 
-"" pbcopy for OSX copy/paste
-vmap <C-x> :!pbcopy<CR>
-vmap <C-c> :w !pbcopy<CR><CR>
-
 "" move line/word
-nmap N $
-nmap H 0
+nnoremap N $
+nnoremap H 0
+
+"" search
+nnoremap U n
+nnoremap O N
 
 "" code format
-vmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
 command! -nargs=0 Format :call CocAction('format')
 
 
