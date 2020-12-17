@@ -2,5 +2,5 @@
   "suggest.enablePreselect": true,
   "python.jediEnabled": false,
   "solargraph.formatting": true,
-  "solargraph.commandPath": "/Users/abelab/.rbenv/shims/solargraph"
+  "solargraph.commandPath": "/Users/abelab/.anyenv/envs/rbenv/shims/solargraph"
 }
