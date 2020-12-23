@@ -86,8 +86,6 @@ repo = 'vim-airline/vim-airline-themes'
 [[plugins]]
 repo = 'sheerun/vim-polyglot'
 [[plugins]]
-repo = 'ervandew/supertab'
-[[plugins]]
 repo = 'bronson/vim-trailing-whitespace'
 [[plugins]]
 repo = 'neoclide/coc.nvim'
@@ -127,6 +125,13 @@ let g:coc_global_extensions = [
       \, 'coc-snippets'
       \, 'coc-vetur'
       \ ]
+'''
+
+[[plugins]]
+repo = 'ervandew/supertab'
+hook_add = '''
+let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabContextDefaultCompletionType = "<c-n>"
 '''
 
 [[plugins]]
