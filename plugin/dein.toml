@@ -182,6 +182,12 @@ call gina#custom#command#option('diff', '--opener', 'vsplit')
 '''
 
 [[plugins]]
+repo = 'kdheepak/lazygit.nvim'
+hook_add = '''
+noremap <silent> <leader>lg :LazyGit<CR>
+'''
+
+[[plugins]]
 repo = 'mattn/emmet-vim'
 hook_add = '''
 let g:user_emmet_settings = {
