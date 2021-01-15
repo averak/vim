@@ -107,8 +107,8 @@ nmap <silent> T <Plug>(coc-definition)
 nmap <silent> <space>rf <Plug>(coc-references)
 "スペースrnでRename
 nmap <silent> <space>rn <Plug>(coc-rename)
-"スペースfmtでFormat
-nmap <silent> <space>fmt <Plug>(coc-format)
+"スペースftでFormat
+nmap <silent> <space>ft <Plug>(coc-format)
 
 let g:coc_global_extensions = [
       \  'coc-lists'
