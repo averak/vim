@@ -137,7 +137,9 @@ nnoremap - <C-x>
 
 "" move line/word
 nnoremap N $
+vnoremap N $
 nnoremap H 0
+vnoremap H 0
 
 "" search
 nnoremap U n
