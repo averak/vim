@@ -144,6 +144,7 @@ vnoremap H 0
 "" search
 nnoremap U n
 nnoremap O N
+nnoremap /  /\v
 
 "" code format
 command! -nargs=0 Format :call CocAction('format')
