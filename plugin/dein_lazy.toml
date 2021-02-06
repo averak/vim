@@ -40,4 +40,9 @@ let g:vimtex_view_method= 'skim'
 let g:vimtex_quickfix_latexlog = {'default': 0}
 nnoremap <Leader>ll <plug>(vimtex-compile)
 nnoremap <Leader>lv <plug>(vimtex-view)
+nnoremap tsf <Nop>
+nnoremap tsc <Nop>
+nnoremap tse <Nop>
+nnoremap tsd <Nop>
+nnoremap tsD <Nop>
 '''
