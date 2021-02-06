@@ -30,3 +30,14 @@ on_ft = ['html', 'xhtml', 'phtml', 'erb', 'php', 'vue', 'css', 'scss']
 [[plugins]]
 repo = 'gorodinskiy/vim-coloresque'
 on_ft = ['css', 'html', 'less', 'sass', 'scss', 'stylus', 'vim']
+
+[[plugins]]
+repo = 'lervag/vimtex'
+on_ft = ['tex']
+hook_post_source = '''
+let g:vimtex_compiler_latexmk_engines = {'_': '-pdfdvi'}
+let g:vimtex_view_method= 'skim'
+let g:vimtex_quickfix_latexlog = {'default': 0}
+nnoremap <Leader>ll <plug>(vimtex-compile)
+nnoremap <Leader>lv <plug>(vimtex-view)
+'''
