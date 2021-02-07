@@ -146,8 +146,9 @@ nnoremap U n
 nnoremap O N
 nnoremap /  /\v
 
-"" save
+"" absorb type
 command! -nargs=0 W :w
+command! -nargs=0 Q :q
 
 "" code format
 command! -nargs=0 Format :call CocAction('format')
