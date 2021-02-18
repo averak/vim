@@ -1,28 +1,21 @@
-"---------------------------------------------------------------------------
 "                   _
 "           _   __ (_)____ ___   _____ _____
 "          | | / // // __ `__ \ / ___// ___/
 "          | |/ // // / / / / // /   / /__
 "          |___//_//_/ /_/ /_//_/    \___/
-"
-"---------------------------------------------------------------------------
-"---------------------------------------------------------------------------
 
-"" -----*----- Base Settings -----*----- ""
+
+"--------------------------------------------------------------"
+"         base settings                                        "
+"--------------------------------------------------------------"
 set encoding=utf-8
 scriptencoding utf-8
 set fileencodings=utf-8,sjis,cp932,euc-jp
-set fileformats=unix,dos,mac
-set bomb
-set binary
 set ttyfast
 set backspace=indent,eol,start
-set tabstop=4
-set softtabstop=4
 set shiftwidth=4
-set expandtab
-set splitright
-set splitbelow
+set tabstop=4
+set softtabstop=0
 set hidden
 set virtualedit=onemore
 set hlsearch
@@ -46,19 +39,17 @@ set title
 set titleold="Terminal"
 set titlestring=%F
 set cursorline
+set autoindent
 set autoread
-set noerrorbells visualbell t_vb=
 set mouse=a
 set whichwrap=h,l
 filetype on
 syntax on
-highlight Pmenu ctermbg=233 ctermfg=241
-highlight PmenuSel ctermbg=233 ctermfg=166
-highlight Search ctermbg=166 ctermfg=233
-highlight Visual ctermbg=166 ctermfg=233
 
 
-"" -----*----- Indent Settings -----*----- ""
+"--------------------------------------------------------------"
+"         indent                                               "
+"--------------------------------------------------------------"
 augroup fileTypeIndent
   autocmd!
   autocmd FileType python setlocal tabstop=4 softtabstop=4 shiftwidth=4
@@ -76,92 +67,73 @@ augroup fileTypeIndent
 augroup END
 
 
-"" -----*----- Shortcuts -----*----- ""
+"--------------------------------------------------------------"
+"         key binds                                            "
+"--------------------------------------------------------------"
+" prefix
 let mapleader="\<Space>"
 
-""htkn to  arrow
-nnoremap k k
-nnoremap t j
+" htkn -> hjkl
 nnoremap h h
-nnoremap n l
-
-vnoremap k k
-vnoremap t j
 vnoremap h h
+nnoremap t j
+vnoremap t j
+nnoremap k k
+vnoremap k k
+nnoremap n l
 vnoremap n l
 
-"" 矢印キー
+" scroll
+nnoremap ok <C-u>
+nnoremap ot <C-d>
+
+" window
+nnoremap <Leader>s :<C-u>split<CR>
+nnoremap <Leader>v :<C-u>vsplit<CR>
 noremap <UP> <C-w>k
 noremap <Down> <C-w>j
 noremap <Left> <C-w>h
 noremap <Right> <C-w>l
 
-" バッファ移動
-noremap ah :bp<CR>
-noremap an :bn<CR>
+" tab
+nnoremap <Leader>tab :tabnew<CR>
 
-" Gina
-noremap ak :Gina diff<CR>
-noremap at :Gina status<CR>
-
-"" scroll
-nnoremap ok <C-u>
-nnoremap ot <C-d>
-
-"" save
-nnoremap <Leader>w :w<CR>
-nnoremap <Leader>qq :q!<CR>
-nnoremap <Leader>eee :e<CR>
-nnoremap <Leader>wq :wq<CR>
-nnoremap <Leader>nn :noh<CR>
-nnoremap <Leader>y :%y<CR>
-nnoremap <Leader>dd :%d<CR>
-
-"" split
-nnoremap <Leader>s :<C-u>split<CR>
-nnoremap <Leader>v :<C-u>vsplit<CR>
-
-"" Tabs
-nnoremap <Tab> gt
-nnoremap <S-Tab> gT
-nnoremap <Leader>t :tabnew<CR>
-
-"" terminal
+" terminal
 nnoremap <Leader>ter :vertical terminal<CR>
 
-"" +(on \d) => increment
-nnoremap + <C-a>
+" move buffer
+noremap <Tab> :bn<CR>
+noremap <S-Tab> :bp<CR>
 
-"" -(on \d) => decrement
+" copy / delete
+nnoremap <Leader>yy :%y<CR>
+nnoremap <Leader>dd :%d<CR>
+
+" increment / decrement
+nnoremap + <C-a>
 nnoremap - <C-x>
 
-"" move line/word
+" edge of line
 nnoremap N $
 vnoremap N $
 nnoremap H 0
 vnoremap H 0
 
-"" search
-nnoremap U n
-nnoremap O N
+" search
 nnoremap /  /\v
+nnoremap K N
+nnoremap T n
 
-"" absorb type
+" absorb type
 command! -nargs=0 W :w
 command! -nargs=0 Q :q
 
-"" code format
-command! -nargs=0 Format :call CocAction('format')
 
-
-"========================================="
-" plugin Manager: dein.vim setting
-"========================================="
-" プラグインが実際にインストールされるディレクトリ
+"--------------------------------------------------------------"
+"         dein.vim                                             "
+"--------------------------------------------------------------"
 let s:dein_dir = expand('~/.cache/dein')
-" dein.vim 本体
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
-" dein.vim がなければ github から落としてくる
 if &runtimepath !~# '/dein.vim'
   if !isdirectory(s:dein_repo_dir)
     execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
@@ -169,16 +141,13 @@ if &runtimepath !~# '/dein.vim'
   execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
 endif
 
-" 設定開始
 if dein#load_state(s:dein_dir)
   call dein#begin(s:dein_dir)
 
-  " プラグインリストを収めた TOML ファイル
-  " 予め TOML ファイル（後述）を用意しておく
   let s:toml = fnamemodify(expand('<sfile>'), ':h').'/plugin/dein.toml'
   let s:lazy_toml = fnamemodify(expand('<sfile>'), ':h').'/plugin/dein_lazy.toml'
 
-   " TOML を読み込み、キャッシュしておく
+   " load toml files
   call dein#load_toml(s:toml,      {'lazy': 0})
   call dein#load_toml(s:lazy_toml, {'lazy': 1})
 
@@ -186,7 +155,7 @@ if dein#load_state(s:dein_dir)
   call dein#save_state()
 endif
 
-" 未インストールのプラグインをインストール
+" install plugins
 if dein#check_install()
   call dein#install()
 endif

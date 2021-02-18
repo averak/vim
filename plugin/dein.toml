@@ -15,7 +15,6 @@ repo = 'cocopon/iceberg.vim'
 [[plugins]]
 repo = 'averak/laserwave.vim'
 hook_add = '''
-syntax enable
 colorscheme laserwave
 '''
 
@@ -97,16 +96,13 @@ highlight CocWarningSign ctermfg=0 ctermbg=172
 "ノーマルモードで
 "スペースclでCocList
 nmap <silent> <space>cl :<C-u>CocList<cr>
-"KでHover
-nmap <silent> K :<C-u>call CocAction('doHover')<cr>
-"TでDefinition
-nmap <silent> T <Plug>(coc-definition)
 "スペースrfでReferences
 nmap <silent> <space>rf <Plug>(coc-references)
 "スペースrnでRename
 nmap <silent> <space>rn <Plug>(coc-rename)
 "スペースftでFormat
 nmap <silent> <space>ft <Plug>(coc-format)
+command! -nargs=0 Format :call CocAction('format')
 
 let g:coc_global_extensions = [
       \  'coc-lists'
