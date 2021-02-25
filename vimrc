@@ -12,6 +12,8 @@ set encoding=utf-8
 scriptencoding utf-8
 set fileencodings=utf-8,sjis,cp932,euc-jp
 set ttyfast
+set splitright
+set splitbelow
 set backspace=indent,eol,start
 set shiftwidth=4
 set tabstop=4
