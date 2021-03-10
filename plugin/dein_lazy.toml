@@ -6,6 +6,7 @@ on_event = 'InsertEnter'
 [[plugins]]
 repo = 'previm/previm'
 on_ft = 'markdown'
+on_cmd = 'PrevimOpen'
 hook_post_source = '''
 nnoremap <silent> <C-p> :PrevimOpen<CR>
 let g:vim_markdown_folding_disabled = 1
